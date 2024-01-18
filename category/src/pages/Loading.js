@@ -34,7 +34,6 @@ function Loading() {
                 </div>
                 <div className="noise"></div>
             </div>
-            <div className="progress"></div>
         </div>
     )
 }

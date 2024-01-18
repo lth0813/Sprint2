@@ -8,23 +8,11 @@
     font-family: 'Poppins', sans-serif;
     }
 
-    .Main-container {
+    .container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    }
-
-    .bi-arrow-left-circle {
-        position: absolute;
-        right: 514px;
-        animation: moveLeftAndBack 1s infinite;
-    }
-
-    .bi-arrow-right-circle {
-        position: absolute;
-        left: 500px; 
-        animation: moveLightAndBack 1s infinite;
     }
 
     .card {
@@ -117,6 +105,20 @@
     display: inline-block;
     text-decoration: none;
     font-weight: 700;
+    }
+
+    .bi-arrow-left-circle {
+        position: absolute;
+        right: 514px;
+        opacity: 0.6;
+        animation: moveLeftAndBack 1s infinite;
+    }
+
+    .bi-arrow-right-circle {
+        position: absolute;
+        left: 500px; 
+        opacity: 0.6;
+        animation: moveLightAndBack 1s infinite;
     }
 
     @keyframes moveLeftAndBack {

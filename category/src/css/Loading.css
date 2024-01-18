@@ -617,34 +617,6 @@
     }
   }
 
-  .progress {
-    position: relative;
-    margin-top: 60px;
-    width: 400px;
-    height: 20px;
-    background: #eee;
-  }
-
-  .progress::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #637373;
-    animation: progress 20s linear infinite;
-  }
-
-  @keyframes progress {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-
   .noise {
     position: absolute;
     top: 50%;

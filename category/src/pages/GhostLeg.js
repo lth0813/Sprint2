@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 function GhostLeg() {
 
     const [isModal, setIsModal] = useState(false);
+    const [isExplain, setIsExplain] = useState(false);
 
     const [isMl1, setIsMl1] = useState(false);
     const [isMl2, setIsMl2] = useState(false);
@@ -33,10 +34,13 @@ function GhostLeg() {
     //     setIsMd1(true);
     //   }, 1000);
 
-      // setTimeout(() => {
-      //   setIsModal(true);
-      // }, 2300);
+    //   setTimeout(() => {
+    //     setIsModal(true);
+    //   }, 2000);
 
+    // setTimeout(() => {
+    //   setIsExplain(true);
+    // }, 2240);
 
 
 
@@ -51,9 +55,13 @@ function GhostLeg() {
     //     setIsMd2(true);
     // }, 1000);
 
-      // setTimeout(() => {
-      //    setIsModal(true);
-      // }, 2300);
+    //   setTimeout(() => {
+    //      setIsModal(true);
+    //   }, 2000);
+
+    //  setTimeout(() => {
+    //   setIsExplain(true);
+    // }, 2240);
 
 
 
@@ -62,15 +70,19 @@ function GhostLeg() {
 
     // setTimeout(() => {
     //     setIsMl3(true);
-    //     }, 0);
+    //     }, 500);
 
     // setTimeout(() => {
     //     setIsMd3(true);
     // }, 1000);
 
     // setTimeout(() => {
-      //   setIsModal(true);
-    // }, 2300);
+    //     setIsModal(true);
+    // }, 2000);
+
+    // setTimeout(() => {
+    //   setIsExplain(true);
+    // }, 2240);
 
 
 
@@ -78,17 +90,21 @@ function GhostLeg() {
 
     // 4번째일 때 사다리
 
-    setTimeout(() => {
-        setIsMr1(true);
-        }, 0);
+    // setTimeout(() => {
+    //     setIsMr1(true);
+    //     }, 500);
 
-    setTimeout(() => {
-        setIsMd4(true);
-    }, 1000);
+    // setTimeout(() => {
+    //     setIsMd4(true);
+    // }, 1000);
 
-    setTimeout(() => {
-      setIsModal(true);
-    }, 2000);
+    // setTimeout(() => {
+    //   setIsModal(true);
+    // }, 2000);
+
+    // setTimeout(() => {
+    //   setIsExplain(true);
+    // }, 2240);
 
 
 
@@ -105,24 +121,33 @@ function GhostLeg() {
     // }, 1000);
 
     // setTimeout(() => {
-      //   setIsModal(true);
-    // }, 2300);
+    //     setIsModal(true);
+    // }, 2000);
+
+    // setTimeout(() => {
+    //   setIsExplain(true);
+    // }, 2240);
+
 
 
 
     //     6번째일 때 사다리
 
-    //   setTimeout(() => {
-    //     setIsMr3(true);
-    //   }, 0);
+      setTimeout(() => {
+        setIsMr3(true);
+      }, 0);
 
-    //   setTimeout(() => {
-    //     setIsMd6(true);
-    //   }, 1000);
+      setTimeout(() => {
+        setIsMd6(true);
+      }, 1000);
 
-    // setTimeout(() => {
-      //   setIsModal(true);
-    // }, 2300);
+    setTimeout(() => {
+        setIsModal(true);
+    }, 2000);
+
+    setTimeout(() => {
+      setIsExplain(true);
+    }, 2240);
 
 
     };
@@ -135,14 +160,14 @@ function GhostLeg() {
     return (
       <div className="ladder"> 
         <img
-          src="./images/wasteBasket.png"
+          src="./images/trash.png"
           className={
             // `${isMl1 ? 'ml1' : ''} ${isMd1 ? 'md1' : ''}`  
             // `${isMl2 ? 'ml2' : ''} ${isMd2 ? 'md2' : ''}`  
             // `${isMl3 ? 'ml3' : ''} ${isMd3 ? 'md3' : ''}`  
-            `${isMr1 ? 'mr1' : ''} ${isMd4 ? 'md4' : ''}`  
+            // `${isMr1 ? 'mr1' : ''} ${isMd4 ? 'md4' : ''}`  
             // `${isMr2 ? 'mr2' : ''} ${isMd5 ? 'md5' : ''}`  
-            // `${isMr3 ? 'mr3' : ''} ${isMd6 ? 'md6' : ''}`        
+            `${isMr3 ? 'mr3' : ''} ${isMd6 ? 'md6' : ''}`        
           }
           id='miniTrash'
         />
@@ -157,7 +182,7 @@ function GhostLeg() {
         </div>   
         <div className='modalCover'>
           <div className={`${isModal ? 'modal' : ''}`} id='modal'>
-            <p className={`${isModal ? 'modal' : ''}`}>
+            <p className={`${isExplain ? 'explain' : ''}`} id='explain'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
               fugiat et. Qui ullam voluptates provident laudantium!
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
@@ -167,6 +192,7 @@ function GhostLeg() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
               fugiat et. Qui ullam voluptates provident laudantium!
             </p>
+            {/* <a href="/">확인</a> */}
           </div>
         </div>   
       </div>
