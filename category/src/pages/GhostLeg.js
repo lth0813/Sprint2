@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 function GhostLeg() {
 
+    const [isModal, setIsModal] = useState(false);
+
     const [isMl1, setIsMl1] = useState(false);
     const [isMl2, setIsMl2] = useState(false);
     const [isMl3, setIsMl3] = useState(false);
@@ -16,11 +18,10 @@ function GhostLeg() {
     const [isMd6, setIsMd6] = useState(false);
   
     useEffect(() => {
-
-      handleMove();
+      trasheMove();
     }, []);
   
-    const handleMove = () => {
+    const trasheMove = () => {
 
     // 1번째일 때 사다리
 
@@ -31,6 +32,11 @@ function GhostLeg() {
     //   setTimeout(() => {
     //     setIsMd1(true);
     //   }, 1000);
+
+      // setTimeout(() => {
+      //   setIsModal(true);
+      // }, 2300);
+
 
 
 
@@ -45,6 +51,11 @@ function GhostLeg() {
     //     setIsMd2(true);
     // }, 1000);
 
+      // setTimeout(() => {
+      //    setIsModal(true);
+      // }, 2300);
+
+
 
 
     // 3번째일 때 사다리
@@ -56,6 +67,11 @@ function GhostLeg() {
     // setTimeout(() => {
     //     setIsMd3(true);
     // }, 1000);
+
+    // setTimeout(() => {
+      //   setIsModal(true);
+    // }, 2300);
+
 
 
 
@@ -69,6 +85,10 @@ function GhostLeg() {
     setTimeout(() => {
         setIsMd4(true);
     }, 1000);
+
+    setTimeout(() => {
+      setIsModal(true);
+    }, 2000);
 
 
 
@@ -84,7 +104,9 @@ function GhostLeg() {
     //     setIsMd5(true);
     // }, 1000);
 
-
+    // setTimeout(() => {
+      //   setIsModal(true);
+    // }, 2300);
 
 
 
@@ -98,12 +120,22 @@ function GhostLeg() {
     //     setIsMd6(true);
     //   }, 1000);
 
+    // setTimeout(() => {
+      //   setIsModal(true);
+    // }, 2300);
+
+
     };
+
+
+    // modal의 값이 바뀌는 조건은 1,2,3,4,5일 때는 순서에 맞는 쓰레기통으로 이동
+    // 6번 이후는 무조건 6번 쓰레기통으로 이동
+    // session 값에 저장된 걸 모달 안에 넣음
   
     return (
-      <div className="ladder">
+      <div className="ladder"> 
         <img
-          src="./images/img.png"
+          src="./images/wasteBasket.png"
           className={
             // `${isMl1 ? 'ml1' : ''} ${isMd1 ? 'md1' : ''}`  
             // `${isMl2 ? 'ml2' : ''} ${isMd2 ? 'md2' : ''}`  
@@ -111,8 +143,32 @@ function GhostLeg() {
             `${isMr1 ? 'mr1' : ''} ${isMd4 ? 'md4' : ''}`  
             // `${isMr2 ? 'mr2' : ''} ${isMd5 ? 'md5' : ''}`  
             // `${isMr3 ? 'mr3' : ''} ${isMd6 ? 'md6' : ''}`        
-        }
+          }
+          id='miniTrash'
         />
+        
+        <div className='separateTrash'>
+          <img src='./images/separateTrash1.png' className='separate1'/>
+          <img src='./images/separateTrash2.png' className='separate2'/>
+          <img src='./images/separateTrash3.png' className='separate3'/>
+          <img src='./images/separateTrash4.png' className='separate4'/>
+          <img src='./images/separateTrash5.png' className='separate5'/>
+          <img src='./images/separateTrash6.png' className='separate6'/>      
+        </div>   
+        <div className='modalCover'>
+          <div className={`${isModal ? 'modal' : ''}`} id='modal'>
+            <p className={`${isModal ? 'modal' : ''}`}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
+              fugiat et. Qui ullam voluptates provident laudantium!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
+              fugiat et. Qui ullam voluptates provident laudantium!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
+              fugiat et. Qui ullam voluptates provident laudantium!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
+              fugiat et. Qui ullam voluptates provident laudantium!
+            </p>
+          </div>
+        </div>   
       </div>
     );
 
