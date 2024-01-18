@@ -1,21 +1,43 @@
 
-body {
+  .ladder {
     margin: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     min-height: 100vh;
+    background: white;
+    z-index: 1;
   }
   
-  .ladder {
-    position: relative;
-  }
-  
-  .ladder img {
+  #miniTrash {
+    margin-bottom: 600px;
     position: absolute;
     width: 80px;
     height: 100px;
     transition: all 1s ease;
   }
+
+  .separateTrash {
+    margin-top: 260px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    z-index: 1;
+  }
+
+  .separate1, .separate2, .separate3, .separate4, .separate5, .separate6 {
+    width: 160px;
+    height: 200px;
+    background: white;
+  }
+
+
+
+  /* 아래부터 사다리 타는 애니매이션 */
+  
+
+  /* 1번째 사다리 */
 
   .ml1 {
     transform: translateX(-400px);
@@ -25,6 +47,8 @@ body {
     transform: translate(-400px, 400px);
   }
 
+  /* 2번째 사다리 */
+
   .ml2 {
     transform: translateX(-300px);
   }
@@ -33,21 +57,27 @@ body {
     transform: translate(-300px, 400px);
   }
 
+  /* 3번째 사다리 */
+
   .ml3 {
-    transform: translateX(-200px);
+    transform: translateX(-120px);
   }
   
   .md3 {
-    transform: translate(-200px, 400px);
+    transform: translate(-120px, 400px);
   }
 
+  /* 4번째 사다리 */
+
   .mr1 {
-    transform: translateX(200px);
+    transform: translateX(110px);
   }
   
   .md4 {
-    transform: translate(200px, 400px);
+    transform: translate(110px, 400px);
   }
+
+  /* 5번째 사다리 */
 
   .mr2 {
     transform: translateX(300px);
@@ -56,6 +86,8 @@ body {
   .md5 {
     transform: translate(300px, 400px);
   }
+
+  /* 6번째 사다리 */
   
   .mr3 {
     transform: translateX(400px);
@@ -64,4 +96,50 @@ body {
   .md6 {
     transform: translate(400px, 400px);
   }
+
+
+  /* 사다리 타는 애니매이션은 여기까지 */
   
+
+  /* 모달 CSS */
+
+  .modalCover {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+
+  #modal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    height: 80vh;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 2;
+    padding: 100px;
+  }
+
+  #modal::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(0px at center);
+  }
+
+  #modal.modal::before {
+  background: #00C86E;
+  clip-path: circle(700px at center);
+  transition: all 0.6s;
+  }
+
+  .modalCover p {
+    opacity: 0;
+  }
