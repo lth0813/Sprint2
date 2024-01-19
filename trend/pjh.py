@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
 from .forms import DocumentForm
+from .models import YourFileModel
 
 
 # Create your views here.
@@ -16,6 +17,8 @@ def FileUploader(request):
         form = DocumentForm(request.POST,request.FILES)
         print(form)
         if form.is_valid():
+            filename = YourFileModel.generate_unique_filename(None,form.cleaned_data['files'].name)
+            print(filename)
             form.save()
             return Response("업로드완료")
         else:
@@ -23,9 +26,5 @@ def FileUploader(request):
     elif request.method == "GET":
         return Response("GET 요청 ")
 
-@csrf_exempt
-def FileName(request):
-    filename = request.POST.get('filename')
-    print(filename)
-    return HttpResponse("이름완료")
+
 

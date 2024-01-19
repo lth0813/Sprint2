@@ -14,10 +14,9 @@ function App() {
   }
 
   const sendfile = () => {  
-    const filename = "1.jpg";
     const server = 'http://192.168.0.53:8000'
     const formData = new FormData();
-    formData.append("files",file,filename)
+    formData.append("files",file)
     axios.post(server+'/file/',formData,
       {headers:{'Content-Type': 'multipart/form-data'}})
       .then((response) => alert("저장완료"))
