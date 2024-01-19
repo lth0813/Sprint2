@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route path='/' element={<PhotoUpload/>}/>
       <Route path='/loading' element={<Loading/>}/>
-      <Route path='/ghostleg' element={<GhostLeg/>}/>
+      <Route path='/ghostleg' element={<GhostLeg/>}/>      
     </Routes>
   );
 }

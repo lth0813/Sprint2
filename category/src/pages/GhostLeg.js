@@ -28,40 +28,40 @@ function GhostLeg() {
 
     //   setTimeout(() => {
     //     setIsMl1(true);
-    //   }, 0);
+    //   }, 1600);
 
     //   setTimeout(() => {
     //     setIsMd1(true);
-    //   }, 1000);
+    //   }, 2300);
 
     //   setTimeout(() => {
     //     setIsModal(true);
-    //   }, 2000);
+    //   }, 3300);
 
     // setTimeout(() => {
     //   setIsExplain(true);
-    // }, 2240);
+    // }, 3540);
 
 
 
 
     // 2번째일 때 사다리
 
-    // setTimeout(() => {
-    //     setIsMl2(true);
-    //     }, 0);
+    setTimeout(() => {
+        setIsMl2(true);
+        }, 1600);
 
-    // setTimeout(() => {
-    //     setIsMd2(true);
-    // }, 1000);
+    setTimeout(() => {
+        setIsMd2(true);
+    }, 2300);
 
-    //   setTimeout(() => {
-    //      setIsModal(true);
-    //   }, 2000);
+      setTimeout(() => {
+         setIsModal(true);
+      }, 3300);
 
-    //  setTimeout(() => {
-    //   setIsExplain(true);
-    // }, 2240);
+     setTimeout(() => {
+      setIsExplain(true);
+    }, 3540);
 
 
 
@@ -70,19 +70,19 @@ function GhostLeg() {
 
     // setTimeout(() => {
     //     setIsMl3(true);
-    //     }, 500);
+    //     }, 1600);
 
     // setTimeout(() => {
     //     setIsMd3(true);
-    // }, 1000);
+    // }, 2300);
 
     // setTimeout(() => {
     //     setIsModal(true);
-    // }, 2000);
+    // }, 3300);
 
     // setTimeout(() => {
     //   setIsExplain(true);
-    // }, 2240);
+    // }, 3540);
 
 
 
@@ -92,19 +92,19 @@ function GhostLeg() {
 
     // setTimeout(() => {
     //     setIsMr1(true);
-    //     }, 500);
+    //     }, 1600);
 
     // setTimeout(() => {
     //     setIsMd4(true);
-    // }, 1000);
+    // }, 2300);
 
     // setTimeout(() => {
     //   setIsModal(true);
-    // }, 2000);
+    // }, 3300);
 
     // setTimeout(() => {
     //   setIsExplain(true);
-    // }, 2240);
+    // }, 3540);
 
 
 
@@ -114,40 +114,40 @@ function GhostLeg() {
 
     // setTimeout(() => {
     //     setIsMr2(true);
-    //     }, 0);
+    //     }, 1600);
 
     // setTimeout(() => {
     //     setIsMd5(true);
-    // }, 1000);
+    // }, 2300);
 
     // setTimeout(() => {
     //     setIsModal(true);
-    // }, 2000);
+    // }, 3300);
 
     // setTimeout(() => {
     //   setIsExplain(true);
-    // }, 2240);
+    // }, 3540);
 
 
 
 
     //     6번째일 때 사다리
 
-      setTimeout(() => {
-        setIsMr3(true);
-      }, 0);
+    //   setTimeout(() => {
+    //     setIsMr3(true);
+    //   }, 1600);
 
-      setTimeout(() => {
-        setIsMd6(true);
-      }, 1000);
+    //   setTimeout(() => {
+    //     setIsMd6(true);
+    //   }, 2300);
 
-    setTimeout(() => {
-        setIsModal(true);
-    }, 2000);
+    // setTimeout(() => {
+    //     setIsModal(true);
+    // }, 3300);
 
-    setTimeout(() => {
-      setIsExplain(true);
-    }, 2240);
+    // setTimeout(() => {
+    //   setIsExplain(true);
+    // }, 3540);
 
 
     };
@@ -163,11 +163,11 @@ function GhostLeg() {
           src="./images/trash.png"
           className={
             // `${isMl1 ? 'ml1' : ''} ${isMd1 ? 'md1' : ''}`  
-            // `${isMl2 ? 'ml2' : ''} ${isMd2 ? 'md2' : ''}`  
+            `${isMl2 ? 'ml2' : ''} ${isMd2 ? 'md2' : ''}`  
             // `${isMl3 ? 'ml3' : ''} ${isMd3 ? 'md3' : ''}`  
             // `${isMr1 ? 'mr1' : ''} ${isMd4 ? 'md4' : ''}`  
             // `${isMr2 ? 'mr2' : ''} ${isMd5 ? 'md5' : ''}`  
-            `${isMr3 ? 'mr3' : ''} ${isMd6 ? 'md6' : ''}`        
+            // `${isMr3 ? 'mr3' : ''} ${isMd6 ? 'md6' : ''}`        
           }
           id='miniTrash'
         />
@@ -182,16 +182,9 @@ function GhostLeg() {
         </div>   
         <div className='modalCover'>
           <div className={`${isModal ? 'modal' : ''}`} id='modal'>
-            <p className={`${isExplain ? 'explain' : ''}`} id='explain'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
-              fugiat et. Qui ullam voluptates provident laudantium!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
-              fugiat et. Qui ullam voluptates provident laudantium!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
-              fugiat et. Qui ullam voluptates provident laudantium!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eum! 
-              fugiat et. Qui ullam voluptates provident laudantium!
-            </p>
+            <h1 className={`${isExplain ? 'explain' : ''}`} id='explain'>
+              플라스틱입니다
+            </h1>
             {/* <a href="/">확인</a> */}
           </div>
         </div>   

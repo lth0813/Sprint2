@@ -1,15 +1,23 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Loading() {
+
+    useEffect(() => {
+        resultPage();
+    }, []);
+
+    const resultPage = () => {
+        setTimeout(() => {
+            window.location.href = "/ghostleg";
+        }, 8000)
+    }
 
     return(
         <div className='loading'>
             <div className="scene">
                 <div className="objects">
-                    <div className="square"></div>
-                    <div className="circle"></div>
-                    <div className="triangle"></div>
+                    <img className="trash" src='./images/trash.png'/>
                 </div>
                 <div className="wizard">
                     <div className="body"></div>

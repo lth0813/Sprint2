@@ -118,8 +118,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1200px;
-    height: 80vh;
+    width: 600px;
+    height: 60vh;
     border-radius: 20px;
     overflow: hidden;
     z-index: 2;
@@ -127,17 +127,17 @@
   }
 
   #modal::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  clip-path: circle(0px at center);
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(0px at center);
   }
 
   #modal.modal::before {
-  background: #00C86E;
-  clip-path: circle(700px at center);
-  transition: all 0.6s;
+    background: #00C86E;
+    clip-path: circle(400px at center);
+    transition: all 0.8s;
   }
 
   #explain {
@@ -146,7 +146,21 @@
 
   .modalCover #explain.explain {
     color: white;
-    font-size: 18px;
+    font-size: 50px;
     opacity: 1;
     z-index: 2;
+  }
+
+  .ladder {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out 0.2s forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
