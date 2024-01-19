@@ -8,23 +8,20 @@ from rest_framework.response import Response
 from .forms import DocumentForm
 from .models import YourFileModel
 
-
 # Create your views here.
-@api_view(['POST','GET'])
+@api_view(['POST', 'GET'])
 @csrf_exempt
 def FileUploader(request):
     if request.method == "POST":
-        form = DocumentForm(request.POST,request.FILES)
+        form = DocumentForm(request.POST, request.FILES)
         print(form)
         if form.is_valid():
-            filename = YourFileModel.generate_unique_filename(None,form.cleaned_data['files'].name)
+            file_model = form.save()
+            filename = file_model.files.name
             print(filename)
-            form.save()
+
             return Response("업로드완료")
         else:
             return Response("실패")
     elif request.method == "GET":
         return Response("GET 요청 ")
-
-
-
