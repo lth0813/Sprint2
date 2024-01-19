@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from trend.views import aaa, yyy ,come
-from trend.pjh import FileUploader
+from trend.pjh import FileUploader, FileName
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('trend/', aaa),

@@ -22,3 +22,10 @@ def FileUploader(request):
             return Response("실패")
     elif request.method == "GET":
         return Response("GET 요청 ")
+
+@csrf_exempt
+def FileName(request):
+    filename = request.POST.get('filename')
+    print(filename)
+    return HttpResponse("이름완료")
+

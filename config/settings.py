@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7*th#xo$8wmzph*81@)kcyf)vx#i(i#uc2rv9tw2^i-4co1#8a
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    '192.168.0.53',
     'localhost',
     ]
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'trend'
 ]
 
@@ -55,13 +56,32 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = [  
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000'
+CORS_ALLOW_HEADERS = [ 
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
 ]
+
+
 
 ROOT_URLCONF = 'config.urls'
 
