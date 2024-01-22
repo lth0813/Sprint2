@@ -21,7 +21,7 @@ function PhotoUpload() {
         axios.post(server+'/file/',formData,
         {headers:{'Content-Type': 'multipart/form-data'}})
         .then(res=>{window.sessionStorage.setItem("filename",res.data.filename)})
-        .then(setTimeout(() => {window.location.href="/loading"},300))
+        .then(setTimeout(() => {window.location.href="/loading"},500))
     }
 
     const truncateFileName = (fileName, maxLength) => {

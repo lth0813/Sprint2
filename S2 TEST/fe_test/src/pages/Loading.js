@@ -8,24 +8,24 @@ function Loading() {
 
     useEffect(() => {
 
-       const server = 'http://localhost:8000';
-       const filename = sessionStorage.getItem('filename')
+    const server = 'http://localhost:8000';
+    const filename = sessionStorage.getItem('filename')
 
-        axios.post(server+'/predict/',
-        {filename :filename},{headers:{'Content-Type': 'application/x-www-form-urlencoded'}}
-        ).then(res => {
-            const result = res.data.result;
-            sessionStorage.setItem('result', result); 
-            console.log(res);
-          })
-          .catch(error => {
-            console.error('File upload failed:', error);
-          });
+    axios.post(server+'/predict/',
+    {filename :filename},{headers:{'Content-Type': 'application/x-www-form-urlencoded'}}
+    ).then(res => {
+        const result = res.data.result;
+        sessionStorage.setItem('result', result); 
+        console.log(res);
+        })
+        .catch(error => {
+        console.error('failed_to_get_result', error);
+        });
 
 
       const timer = setTimeout(() => {
         setFadeOut(true);
-      }, 100000);
+      }, 5000);
   
       return () => clearTimeout(timer);
     }, []);

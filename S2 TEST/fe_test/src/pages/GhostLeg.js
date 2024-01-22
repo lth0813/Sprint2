@@ -20,6 +20,34 @@ function GhostLeg() {
   const [isMd4, setIsMd4] = useState(false);
   const [isMd5, setIsMd5] = useState(false);
   const [isMd6, setIsMd6] = useState(false);
+  
+  const[classification, setClass] = useState(false);
+
+  const findclass = () => {
+    const answer = sessionStorage.getItem('result')
+    if (answer === '1') {
+      setClass('비닐') 
+    }
+    if (answer === '2') {
+      setClass('플라스틱')
+    }
+    if (answer === '3') {
+      setClass('캔')
+    }
+    if (answer === '4') {
+      setClass('유리')
+    }
+    if (answer === '5') {
+      setClass('금속')
+    }
+    if (answer === '6') {
+      setClass('기타')
+    }
+  }
+
+  useEffect(() => {
+    findclass();
+  }, []);
 
   useEffect(() => {
     trasheMove();
@@ -171,6 +199,7 @@ function GhostLeg() {
 
   };
 
+  
   const sendResult = () => {
     const server = 'http://localhost:8000'
       axios.post(server+'/result/',{
@@ -227,7 +256,7 @@ function GhostLeg() {
       <div className='modalCover'>
         <div className={`${isModal ? 'modal' : ''}`} id='modal'>
           <h1 className={`${isExplain ? 'explain' : ''}`} id='explain'>
-            플라스틱입니다
+            {classification}입니다
           </h1>
           <a href="/" onClick={()=>{sendResult()}} className={`${isExplain ? 'explain' : ''}`}>만족</a>
           <a onClick={()=>{setExplainModal(true)}} className={`${isExplain ? 'explain' : ''}`}>불만족</a>
