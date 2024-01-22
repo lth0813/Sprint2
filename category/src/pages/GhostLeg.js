@@ -162,30 +162,48 @@ function GhostLeg() {
         <img
           src="./images/trash.png"
           className={
-            // `${isMl1 ? 'ml1' : ''} ${isMd1 ? 'md1' : ''}`  
-            `${isMl2 ? 'ml2' : ''} ${isMd2 ? 'md2' : ''}`  
-            // `${isMl3 ? 'ml3' : ''} ${isMd3 ? 'md3' : ''}`  
-            // `${isMr1 ? 'mr1' : ''} ${isMd4 ? 'md4' : ''}`  
-            // `${isMr2 ? 'mr2' : ''} ${isMd5 ? 'md5' : ''}`  
-            // `${isMr3 ? 'mr3' : ''} ${isMd6 ? 'md6' : ''}`        
+            `${isModal ? 'modal' : ''}
+            ${isMl1 ? 'ml1' : ''} ${isMd1 ? 'md1' : ''} 
+            ${isMl2 ? 'ml2' : ''} ${isMd2 ? 'md2' : ''} 
+            ${isMl3 ? 'ml3' : ''} ${isMd3 ? 'md3' : ''}
+            ${isMr1 ? 'mr1' : ''} ${isMd4 ? 'md4' : ''}  
+            ${isMr2 ? 'mr2' : ''} ${isMd5 ? 'md5' : ''} 
+            ${isMr3 ? 'mr3' : ''} ${isMd6 ? 'md6' : ''}`        
           }
           id='miniTrash'
-        />
-        
-        <div className='separateTrash'>
-          <img src='./images/separateTrash1.png' className='separate1'/>
-          <img src='./images/separateTrash2.png' className='separate2'/>
-          <img src='./images/separateTrash3.png' className='separate3'/>
-          <img src='./images/separateTrash4.png' className='separate4'/>
-          <img src='./images/separateTrash5.png' className='separate5'/>
-          <img src='./images/separateTrash6.png' className='separate6'/>      
+        />     
+        <div className={`separateTrash ${isModal ? 'modal' : ''}`}>
+          <div className='trashName'>
+            <img src='./images/separateTrash1.png' className='separate1'/>
+            <h2>비닐</h2>
+          </div>
+          <div className='trashName'>
+            <img src='./images/separateTrash2.png' className='separate2'/>
+            <h2>플라스틱</h2>
+          </div>
+          <div className='trashName'>
+            <img src='./images/separateTrash3.png' className='separate3'/>
+            <h2>캔</h2>
+          </div>
+          <div className='trashName'>
+            <img src='./images/separateTrash4.png' className='separate4'/>
+            <h2>유리</h2>
+          </div>
+          <div className='trashName'>
+            <img src='./images/separateTrash5.png' className='separate5'/>
+            <h2>금속</h2>
+          </div>
+          <div className='trashName'>
+            <img src='./images/separateTrash6.png' className='separate6'/>  
+            <h2>기타</h2>
+          </div>    
         </div>   
         <div className='modalCover'>
           <div className={`${isModal ? 'modal' : ''}`} id='modal'>
             <h1 className={`${isExplain ? 'explain' : ''}`} id='explain'>
               플라스틱입니다
             </h1>
-            {/* <a href="/">확인</a> */}
+            <a href="/" className={`${isExplain ? 'explain' : ''}`}>홈페이지 이동</a>
           </div>
         </div>   
       </div>

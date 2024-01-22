@@ -13,7 +13,7 @@ function Modal(props) {
         },
         content: {
             position: 'absolute',
-            width: '500px',
+            width: '600px',
             height: '600px',
             transform: 'translate(-50%, -50%)',
             top: '50%',
@@ -25,7 +25,8 @@ function Modal(props) {
             borderRadius: '3px',
             outline: 'none',
             padding: '0.5%',
-            zIndex: '15'
+            zIndex: '15',
+            borderRadius: '20px'
         },
     };
     return(

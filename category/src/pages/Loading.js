@@ -3,18 +3,22 @@ import React, { useState, useEffect } from 'react';
 
 function Loading() {
 
-    useEffect(() => {
-        resultPage();
-    }, []);
+    const [fadeOut, setFadeOut] = useState(false);
 
-    const resultPage = () => {
-        setTimeout(() => {
-            window.location.href = "/ghostleg";
-        }, 8000)
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setFadeOut(true);
+      }, 5000);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+    const navigateToGhostleg = () => {
+      window.location.href = "/ghostleg";
     }
 
     return(
-        <div className='loading'>
+        <div className={`loading ${fadeOut ? 'fadeOut' : ''}`} onAnimationEnd={navigateToGhostleg}>
             <div className="scene">
                 <div className="objects">
                     <img className="trash" src='./images/trash.png'/>

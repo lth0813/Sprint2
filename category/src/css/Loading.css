@@ -53,7 +53,7 @@
     border-radius: 22px;
     transform-origin: 16px 22px;
     transform: rotate(70deg);
-    animation: right_arm 10s ease-in-out infinite;
+    animation: right_arm 8s ease-in-out infinite;
   }
 
   .right-arm .right-hand {
@@ -66,7 +66,7 @@
     background: #f1c5b4;
     transform-origin: center center;
     transform: rotate(-40deg);
-    animation: right_hand 10s ease-in-out infinite;
+    animation: right_hand 8s ease-in-out infinite;
   }
 
   .right-arm .right-hand::after {
@@ -79,7 +79,7 @@
     border-radius: 10px;
     background: #f1c5b4;
     transform: translateY(16px);
-    animation: right_finger 10s ease-in-out infinite;
+    animation: right_finger 8s ease-in-out infinite;
   }
 
   .left-arm {
@@ -92,7 +92,7 @@
     border-bottom-left-radius: 8px;
     transform-origin: 60px 26px;
     transform: rotate(-70deg);
-    animation: left_arm 10s ease-in-out infinite;
+    animation: left_arm 8s ease-in-out infinite;
   }
 
   .left-arm .left-hand {
@@ -117,7 +117,7 @@
     background: #f1c5b4;
     transform-origin: right bottom;
     transform: scaleX(0);
-    animation: left_finger 10s ease-in-out infinite;
+    animation: left_finger 8s ease-in-out infinite;
   }
 
   .head {
@@ -128,7 +128,7 @@
     height: 210px;
     transform-origin: center center;
     transform: rotate(-3deg);
-    animation: head 10s ease-in-out infinite;
+    animation: head 7s ease-in-out infinite;
   }
 
   .head .beard {
@@ -497,10 +497,27 @@
   .trash {
     position: absolute;
     bottom: -6px;
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
     transform: rotate(-360deg);
-    animation: trash 10s ease-in-out infinite;
+    animation: trash 8s ease-in-out infinite;
+  }
+
+  .loading {
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .loading.fadeOut {
+    animation: fadeOut 0.4s ease-in-out 0.2s forwards;
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
  
   @keyframes trash {
@@ -510,13 +527,13 @@
     10% {
       transform: translateY(-155px) translatex(-15px) rotate(10deg);
     }
-    55% {
+    50% {
       transform: translateY(-155px) translatex(-15px) rotate(-350deg);
     }
-    57% {
+    50% {
       transform: translateY(-155px) translatex(-15px) rotate(-350deg);
     }
-    63% {
+    60% {
       transform: rotate(-360deg);
     }
   }

@@ -38,7 +38,7 @@ function PhotoUpload() {
         formData.append("files",file)
         axios.post(server+'/file/',formData,
         {headers:{'Content-Type': 'multipart/form-data'}})
-        .then((response) => alert("저장완료"))
+        .then((response) => alert("저장완료")).then(window.location.href="/loading")
     }
 
     const truncateFileName = (fileName, maxLength) => {
@@ -57,6 +57,7 @@ function PhotoUpload() {
         setShowButton(!!file);
     }, [file]);
 
+
     return(
         <div className="container">
             <svg onClick={()=>{setModal(true)}} xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-question-circle" viewBox="0 0 16 16">
@@ -70,8 +71,8 @@ function PhotoUpload() {
                 <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
             </svg>
             <div className="card">
-                <div className="hidden"></div>
-                <div className="content">
+                <div className={`hidden ${file.name ? 'hovered' : ''}`}></div>
+                <div className={`content ${file.name ? 'hovered' : ''}`}>
                     <div className='recycling'>
                         <h2>recycling</h2>
                         <div className='secUpload'>
@@ -82,26 +83,17 @@ function PhotoUpload() {
                                             사진 업로드
                                         </button>
                                     </label>
-                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}}></input>
+                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept="image/gif, image/jpeg, image/png"/>
                                 </div>
                                 <p>{truncateFileName(file.name || "", 16)}</p>
                             </div>
-                            <button onClick={() => { sendfile() }} className={`result ${showButton ? 'show' : ''}`}>
-                                결과 확인
-                            </button>
+                            <button onClick={() => { sendfile(); }} className={`result ${showButton ? 'show' : ''}`}>결과 확인</button>
                         </div>
                     </div>
                 </div>
-                <img src="./images/wasteBasket.png"/>
+                <img className={`${file.name ? 'hovered' : ''}`} src="./images/wasteBasket.png"/>
             </div>
-        
-
             <Modal setModal={setModal} modal={modal}></Modal>
-            {/* <div className={`${isModal ? 'info' : ''}`} id='info'>
-                <h1 className={`${isExplain ? 'infoExplain' : ''}`} id='infoExplain'>
-                플라스틱입니다
-                </h1>
-            </div> */}
         </div>
     )
 }
