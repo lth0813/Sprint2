@@ -1,11 +1,30 @@
 
 import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
 
 function Loading() {
 
     const [fadeOut, setFadeOut] = useState(false);
 
     useEffect(() => {
+
+    //    const server = 'http://192.168.0.53:8000';
+
+    //     axios.post(server + '/file/', {
+    //       headers: {
+    //         'Content-Type': 'multipart/form-data'
+    //       }
+    //     })
+    //       .then(response => {
+    //         const result = response.data.result;
+    //         sessionStorage.setItem('result', result); 
+    //         console.log('File uploaded successfully!');
+    //       })
+    //       .catch(error => {
+    //         console.error('File upload failed:', error);
+    //       });
+
+
       const timer = setTimeout(() => {
         setFadeOut(true);
       }, 5000);

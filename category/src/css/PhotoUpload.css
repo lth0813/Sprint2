@@ -261,35 +261,12 @@
 
     @media(max-width: 990px) {
 
-        .Main-container .bi-arrow-left-circle {
+        .container .bi-arrow-left-circle {
             opacity: 0;
         }
     
-        .Main-container .bi-arrow-right-circle {
+        .container .bi-arrow-right-circle {
             opacity: 0;
-        }
-
-        .card {
-            width: auto;
-            max-width: 350px;
-            align-items: flex-start;
-            margin: 10px;
-        }
-
-        .card:hover {
-            height: 600px;
-        }
-
-        .card .content {
-            width: 100%;
-            left: 0;
-            padding: 40px;
-        }
-
-        .card:hover img {
-            top: 70%;
-            left: 50%;
-            height: 300px;
         }
 
     }

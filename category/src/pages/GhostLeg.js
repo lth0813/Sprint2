@@ -24,28 +24,28 @@ function GhostLeg() {
 
   const trasheMove = () => {
 
-    // const resultValue = sessionStorage.getItem('result')
+    const resultValue = sessionStorage.getItem('result')
 
 
     // 1번째일 때 사다리
 
-    // if (resultValue === 1) {
-    //   setTimeout(() => {
-    //     setIsMl1(true);
-    //   }, 1600);
+    if (resultValue === 1) {
+      setTimeout(() => {
+        setIsMl1(true);
+      }, 1600);
   
-    //   setTimeout(() => {
-    //     setIsMd1(true);
-    //   }, 2300);
+      setTimeout(() => {
+        setIsMd1(true);
+      }, 2300);
   
-    //   setTimeout(() => {
-    //     setIsModal(true);
-    //   }, 3300);
+      setTimeout(() => {
+        setIsModal(true);
+      }, 3300);
   
-    //   setTimeout(() => {
-    //     setIsExplain(true);
-    //   }, 3540);
-    // }
+      setTimeout(() => {
+        setIsExplain(true);
+      }, 3540);
+    }
 
 
   // 2번째일 때 사다리
@@ -74,97 +74,97 @@ function GhostLeg() {
 
   // 3번째일 때 사다리
 
-  // if (resultValue === 3) {
+  if (resultValue === 3) {
 
-  //   setTimeout(() => {
-  //       setIsMl3(true);
-  //       }, 1600);
+    setTimeout(() => {
+        setIsMl3(true);
+        }, 1600);
 
-  //   setTimeout(() => {
-  //       setIsMd3(true);
-  //   }, 2300);
+    setTimeout(() => {
+        setIsMd3(true);
+    }, 2300);
 
-  //   setTimeout(() => {
-  //       setIsModal(true);
-  //   }, 3300);
+    setTimeout(() => {
+        setIsModal(true);
+    }, 3300);
 
-  //   setTimeout(() => {
-  //     setIsExplain(true);
-  //   }, 3540);
+    setTimeout(() => {
+      setIsExplain(true);
+    }, 3540);
 
-  // }
+  }
 
 
 
   // 4번째일 때 사다리
 
-  // if (resultValue === 4) {
+  if (resultValue === 4) {
 
-    // setTimeout(() => {
-    //     setIsMr1(true);
-    //     }, 1600);
+    setTimeout(() => {
+        setIsMr1(true);
+        }, 1600);
 
-    // setTimeout(() => {
-    //     setIsMd4(true);
-    // }, 2300);
+    setTimeout(() => {
+        setIsMd4(true);
+    }, 2300);
 
-    // setTimeout(() => {
-    //   setIsModal(true);
-    // }, 3300);
+    setTimeout(() => {
+      setIsModal(true);
+    }, 3300);
 
-    // setTimeout(() => {
-    //   setIsExplain(true);
-    // }, 3540);
+    setTimeout(() => {
+      setIsExplain(true);
+    }, 3540);
 
-  // }
+  }
 
 
 
   // 5번째일 때 사다리
 
-  // if (resultValue === 5) {
+  if (resultValue === 5) {
 
-    // setTimeout(() => {
-    //     setIsMr2(true);
-    //     }, 1600);
+    setTimeout(() => {
+        setIsMr2(true);
+        }, 1600);
 
-    // setTimeout(() => {
-    //     setIsMd5(true);
-    // }, 2300);
+    setTimeout(() => {
+        setIsMd5(true);
+    }, 2300);
 
-    // setTimeout(() => {
-    //     setIsModal(true);
-    // }, 3300);
+    setTimeout(() => {
+        setIsModal(true);
+    }, 3300);
 
-    // setTimeout(() => {
-    //   setIsExplain(true);
-    // }, 3540);
+    setTimeout(() => {
+      setIsExplain(true);
+    }, 3540);
 
-  // }
+  }
 
 
 
   //     6번째일 때 사다리
 
-  // if (resultValue === 6) {
+  if (resultValue === 6) {
 
-    //   setTimeout(() => {
-    //     setIsMr3(true);
-    //   }, 1600);
+      setTimeout(() => {
+        setIsMr3(true);
+      }, 1600);
 
-    //   setTimeout(() => {
-    //     setIsMd6(true);
-    //   }, 2300);
+      setTimeout(() => {
+        setIsMd6(true);
+      }, 2300);
 
-    // setTimeout(() => {
-    //     setIsModal(true);
-    // }, 3300);
+    setTimeout(() => {
+        setIsModal(true);
+    }, 3300);
 
-    // setTimeout(() => {
-    //   setIsExplain(true);
-    // }, 3540);
+    setTimeout(() => {
+      setIsExplain(true);
+    }, 3540);
 
-    // }
+    }
 
   };
 
