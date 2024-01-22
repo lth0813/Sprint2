@@ -22,7 +22,6 @@ function Modal(props) {
             background: '#fff',
             overflow: 'auto',
             WebkitOverflowScrolling: 'touch',
-            borderRadius: '3px',
             outline: 'none',
             padding: '0.5%',
             zIndex: '15',

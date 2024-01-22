@@ -21,7 +21,7 @@ function Loading() {
         <div className={`loading ${fadeOut ? 'fadeOut' : ''}`} onAnimationEnd={navigateToGhostleg}>
             <div className="scene">
                 <div className="objects">
-                    <img className="trash" src='./images/trash.png'/>
+                    <img className="trash" alt='catTrash' src='./images/trash.png'/>
                 </div>
                 <div className="wizard">
                     <div className="body"></div>

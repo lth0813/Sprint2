@@ -4,28 +4,10 @@ import Modal from "./Modal";
 
 function PhotoUpload() {
 
-    const [isModal, setIsModal] = useState(false);
-    const [isExplain, setIsExplain] = useState(false);
     const [modal,setModal] = useState(false);
     const [file,setFile] = useState(false);
     const [showButton, setShowButton] = useState(false);
 
-    useEffect(() => {
-        const info = document.querySelector('.bi-question-circle');
-        info.addEventListener('click', infoExplain);
-
-
-        return () => {
-            info.removeEventListener('click', infoExplain);
-          };
-    }, []);
-
-    const infoExplain = () => {
-        setIsModal(true);
-        setTimeout(() => {
-            setIsExplain(true);
-        }, 240);
-    };
 
     const uploadfile = (e) => {
         console.log(e.target.files[0])
@@ -38,12 +20,10 @@ function PhotoUpload() {
         formData.append("files",file)
         axios.post(server+'/file/',formData,
         {headers:{'Content-Type': 'multipart/form-data'}})
-        .then((response) => alert("저장완료")).then(window.location.href="/loading")
+        .then((response) => alert("쓰레기 분류를 시작하겠습니다")).then(window.location.href="/loading")
     }
 
     const truncateFileName = (fileName, maxLength) => {
-
-        const result = document.querySelector(".result")
 
         if (fileName.length <= maxLength) {
         return fileName;
@@ -91,7 +71,7 @@ function PhotoUpload() {
                         </div>
                     </div>
                 </div>
-                <img className={`${file.name ? 'hovered' : ''}`} src="./images/wasteBasket.png"/>
+                <img className={`${file.name ? 'hovered' : ''}`}  alt='trashCan' src="./images/wasteBasket.png"/>
             </div>
             <Modal setModal={setModal} modal={modal}></Modal>
         </div>
