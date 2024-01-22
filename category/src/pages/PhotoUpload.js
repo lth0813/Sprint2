@@ -20,7 +20,7 @@ function PhotoUpload() {
         formData.append("files",file)
         axios.post(server+'/file/',formData,
         {headers:{'Content-Type': 'multipart/form-data'}})
-        .then((response) => alert("쓰레기 분류를 시작하겠습니다")).then(window.location.href="/loading")
+        .then(window.location.href="/loading").then((res)=>window.sessionStorage.setItem(res.data))
     }
 
     const truncateFileName = (fileName, maxLength) => {

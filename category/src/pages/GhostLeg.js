@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import ExplainModal from './ExplainModal';
+import axios from 'axios';
 
 function GhostLeg() {
 
   const [isModal, setIsModal] = useState(false);
   const [isExplain, setIsExplain] = useState(false);
+  const [explainModal, setExplainModal] = useState(false);
 
   const [isMl1, setIsMl1] = useState(false);
   const [isMl2, setIsMl2] = useState(false);
@@ -50,7 +53,7 @@ function GhostLeg() {
 
   // 2번째일 때 사다리
 
-  // if (resultValue === 2) {
+  if (resultValue === 2) {
 
     setTimeout(() => {
         setIsMl2(true);
@@ -68,7 +71,7 @@ function GhostLeg() {
       setIsExplain(true);
     }, 3540);
 
-  // }
+  }
 
 
 
@@ -168,10 +171,16 @@ function GhostLeg() {
 
   };
 
+  const sendResult = () => {
+    const server = 'http://192.168.0.53:8000'
+      axios.post(server+'/result/',{
+        filename : "어쩌구",
+        result : "저쩌구"
+      },
+      {headers:{'Content-Type': 'application/x-www-form-urlencoded'}})
+      .then((response) => alert(response.data))
+  }
 
-  // modal의 값이 바뀌는 조건은 1,2,3,4,5일 때는 순서에 맞는 쓰레기통으로 이동
-  // 6번 이후는 무조건 6번 쓰레기통으로 이동
-  // session 값에 저장된 걸 모달 안에 넣음
 
   return (
     <div className="ladder"> 
@@ -220,9 +229,11 @@ function GhostLeg() {
           <h1 className={`${isExplain ? 'explain' : ''}`} id='explain'>
             플라스틱입니다
           </h1>
-          <a href="/" className={`${isExplain ? 'explain' : ''}`}>홈페이지 이동</a>
+          <a href="/" onClick={()=>{sendResult()}} className={`${isExplain ? 'explain' : ''}`}>만족</a>
+          <a onClick={()=>{setExplainModal(true)}} className={`${isExplain ? 'explain' : ''}`}>불만족</a>
         </div>
       </div>   
+      <ExplainModal explainModal={explainModal} setExplainModal={setExplainModal}/>
     </div>
   );
 
