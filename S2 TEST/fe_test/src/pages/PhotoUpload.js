@@ -19,13 +19,12 @@ function PhotoUpload() {
             }
             else if (res.data === 1) {
                 setAL(true)
+                if (addlearn){
+                    window.location.href = "/maintainance"
+                }
             }
         })
-        .then(() => {
-            if (addlearn){
-                window.location.href = "/maintainance"
-            }
-        }) },[addlearn])
+    },[addlearn])
 
     useEffect(()=>{
         goloading();

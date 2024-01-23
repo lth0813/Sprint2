@@ -8,6 +8,7 @@ const reSendResult = () => {
       result : document.querySelector('input[name=result]:checked').value
     },
     {headers:{'Content-Type': 'application/x-www-form-urlencoded'}})
+    .then(sessionStorage.clear())
     .then(alert("응답해주셔서 감사합니다.")).then(window.location.href='http://localhost:3000')
 }
 

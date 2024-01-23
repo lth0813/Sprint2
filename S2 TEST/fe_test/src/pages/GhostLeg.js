@@ -207,6 +207,7 @@ function GhostLeg() {
         result : window.sessionStorage.getItem('result')
       },
       {headers:{'Content-Type': 'application/x-www-form-urlencoded'}})
+      .then(sessionStorage.clear())
       .then((response) => alert(response.data))
   }
 

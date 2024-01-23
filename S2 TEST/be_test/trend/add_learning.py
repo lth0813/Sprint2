@@ -1,5 +1,4 @@
 from django.views.decorators.csrf import csrf_exempt
-from glob import glob
 from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.applications import VGG16
@@ -9,6 +8,7 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 from django.http import HttpResponse
 import mysql.connector
+import os
 
 @csrf_exempt
 def add_learning(request):
@@ -33,8 +33,7 @@ def add_learning(request):
     new_data_X = []
     new_data_y = []
     for name, result in data:
-        x = glob(f'./{name}')
-        x = plt.imread(x[0])
+        x = plt.imread(f'./{name}')
         x = cv.resize(x,(224,224))
         x = x.reshape(1,224,224,-1)
         x = x[:,:,:,:3]
@@ -52,11 +51,15 @@ def add_learning(request):
     X_train = vgg.predict(X_train)
     X_test = vgg.predict(X_test)
     
-    history = model.fit(X_train,y_train,epochs=20,validation_data=(X_test,y_test))
+    model.fit(X_train,y_train,epochs=20,validation_data=(X_test,y_test))
     
     np.save('X.npy',X)
     np.save('y.npy',y)
     model.save('smart_bin2.h5')
+    
+    for name, result in data:
+        file_path = f'./{name}'
+        os.remove(file_path)
     
     file_save_query = "DELETE FROM result"
     cursor = connection.cursor()

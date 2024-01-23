@@ -5,6 +5,7 @@ import axios from 'axios';
 function Loading() {
 
     const [fadeOut, setFadeOut] = useState(false);
+    const [answer, setAnswer] = useState(false);
 
     useEffect(() => {
 
@@ -16,22 +17,21 @@ function Loading() {
     ).then(res => {
         const result = res.data.result;
         sessionStorage.setItem('result', result); 
+        setAnswer(true);
         console.log(res);
         })
         .catch(error => {
         console.error('failed_to_get_result', error);
         });
-
-
-      const timer = setTimeout(() => {
+        }, []);
+    
+    if (answer) {
+        setAnswer(false);
         setFadeOut(true);
-      }, 5000);
-  
-      return () => clearTimeout(timer);
-    }, []);
-  
+        }
+    
     const navigateToGhostleg = () => {
-      window.location.href = "/ghostleg";
+        window.location.href = "/ghostleg";
     }
 
     return(
