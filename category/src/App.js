@@ -3,9 +3,11 @@ import React from 'react';
 import './css/PhotoUpload.css';
 import './css/Loading.css';
 import './css/GhostLeg.css';
+import './css/Result.css';
 import PhotoUpload from "./pages/PhotoUpload";
 import Loading from "./pages/Loading";
 import GhostLeg from "./pages/GhostLeg";
+import Maintainance from "./pages/Maintainance";
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Route path='/' element={<PhotoUpload/>}/>
       <Route path='/loading' element={<Loading/>}/>
       <Route path='/ghostleg' element={<GhostLeg/>}/>      
+      <Route path='/maintainance' element={<Maintainance/>}/>
     </Routes>
   );
 }

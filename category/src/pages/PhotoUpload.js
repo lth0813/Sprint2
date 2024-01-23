@@ -15,12 +15,13 @@ function PhotoUpload() {
     }
 
     const sendfile = () => {  
-        const server = 'http://192.168.0.53:8000'
+        const server = 'http://localhost:8000'
         const formData = new FormData();
         formData.append("files",file)
         axios.post(server+'/file/',formData,
         {headers:{'Content-Type': 'multipart/form-data'}})
-        .then(window.location.href="/loading").then((res)=>window.sessionStorage.setItem(res.data))
+        .then(res=>{window.sessionStorage.setItem("filename",res.data.filename)})
+        .then(setTimeout(() => {window.location.href="/loading"},500))
     }
 
     const truncateFileName = (fileName, maxLength) => {
