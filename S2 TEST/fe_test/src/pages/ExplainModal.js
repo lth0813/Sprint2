@@ -8,7 +8,7 @@ const reSendResult = () => {
       result : document.querySelector('input[name=result]:checked').value
     },
     {headers:{'Content-Type': 'application/x-www-form-urlencoded'}})
-    .then(alert("응답해 주셔서 감사합니다.")).then(window.location.href='http://localhost:3000')
+    .then(alert("응답해주셔서 감사합니다.")).then(window.location.href='http://localhost:3000')
 }
 
 function ExplainModal (props) {
@@ -24,36 +24,44 @@ function ExplainModal (props) {
         },
         content: {
             position: 'absolute',
-            width: '400px',
+            width: '600px',
             height: '600px',
             transform: 'translate(-50%, -50%)',
             top: '50%',
             left: '50%',
             border: '1px solid #ccc',
-            background: '#fff',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
             borderRadius: '3px',
             outline: 'none',
-            padding: '0.5%',
             zIndex: '15',
-            borderRadius: '20px'
+            borderRadius: '20px',
+            display: 'flex',
+            aligniItems: 'center',
+            justifyContent: 'center',
         },
     }
     return(
         <ReactModal style={ExplainModalStyle} isOpen={props.explainModal}>
-            <div style={{height:"550px",display:"flex",flexDirection:"column",alignItems:"center", justifyContent:"space-between"}}>
-                <h2>결과가 다른가요?</h2>
-                <div style={{height:"300px",display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-                    <label><input type="radio" name="result" value={1}/> 비닐</label>
-                    <label><input type="radio" name="result" value={2}/> 플라스틱</label>
-                    <label><input type="radio" name="result" value={3}/> 캔</label>
-                    <label><input type="radio" name="result" value={4}/> 유리</label>
-                    <label><input type="radio" name="result" value={5}/> 금속</label>
-                    <label><input type="radio" name="result" value={6}/> 기타</label>
+            <div className="group">
+            <h2>그럼 어떤 분류인가요?</h2>
+            <div className="radioGrop">
+                <div className="radio1">
+                    <input className="input" type="radio" name="result" id="rb1" value={0}/>
+                    <label className="label" htmlFor="rb1">종이</label>
+                    <input className="input" type="radio" name="result" id="rb2" value={1}/>
+                    <label className="label" htmlFor="rb2">플라스틱</label>
+                    <input className="input" type="radio" name="result" id="rb3" value={2}/>
+                    <label className="label" htmlFor="rb3">유리</label>
                 </div>
-                <button onClick={()=>{reSendResult()}}>제출</button>
-
+                <div className="radio2">
+                    <input className="input" type="radio" name="result" id="rb4" value={3}/>
+                    <label className="label" htmlFor="rb4">캔</label>
+                    <input className="input" type="radio" name="result" id="rb5" value={4}/>
+                    <label className="label" htmlFor="rb5">스티로폼</label>
+                    <input className="input" type="radio" name="result" id="rb6" value={5}/>
+                    <label className="label" htmlFor="rb6">페트병</label>
+                </div>
+            </div>
+            <button className="change" onClick={()=>{reSendResult()}}>제출</button>
             </div>
         </ReactModal>
     )

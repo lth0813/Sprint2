@@ -7,11 +7,44 @@ function PhotoUpload() {
     const [modal,setModal] = useState(false);
     const [file,setFile] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const [loading,setLoading] = useState(null);
+    const [addlearn,setAL] = useState(false);
 
+    useEffect(() => {
+        axios.post('http://localhost:8000/check/')
+        .then((res)=>{
+            if (res.data === 0) {
+                console.log('재학습 없음')
+                setAL(false)
+            }
+            else if (res.data === 1) {
+                setAL(true)
+            }
+        })
+        .then(() => {
+            if (addlearn){
+                window.location.href = "/maintainance"
+            }
+        }) },[addlearn])
+
+    useEffect(()=>{
+        goloading();
+    },[loading])
+
+    const goloading = () => {
+        if(loading !== null){
+            window.location.href = "/loading"
+        }
+    }
 
     const uploadfile = (e) => {
-        console.log(e.target.files[0])
-        setFile(e.target.files[0])
+        const file_extension = e.target.files[0].name.slice(-4).toLowerCase()
+        const file_allow = ['.jpg','.png','.svg','jpeg','webp']
+        if(!file_allow.includes(file_extension)){
+            alert("이미지 파일만 첨부해주세요.")
+        }else{
+            setFile(e.target.files[0])
+        }
     }
 
     const sendfile = () => {  
@@ -20,9 +53,11 @@ function PhotoUpload() {
         formData.append("files",file)
         axios.post(server+'/file/',formData,
         {headers:{'Content-Type': 'multipart/form-data'}})
-        .then(res=>{window.sessionStorage.setItem("filename",res.data.filename)})
-        .then(setTimeout(() => {window.location.href="/loading"},500))
-    }
+        .then((res)=>{
+            window.sessionStorage.setItem("filename",res.data.filename)
+            setLoading(res.data.filename)
+        })}
+
 
     const truncateFileName = (fileName, maxLength) => {
 
@@ -64,7 +99,7 @@ function PhotoUpload() {
                                             사진 업로드
                                         </button>
                                     </label>
-                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept="image/gif, image/jpeg, image/png"/>
+                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept=".jpg, .jpeg, .png, .svg, .webp"/>
                                 </div>
                                 <p>{truncateFileName(file.name || "", 16)}</p>
                             </div>

@@ -25,23 +25,23 @@ function GhostLeg() {
 
   const findclass = () => {
     const answer = sessionStorage.getItem('result')
+    if (answer === '0') {
+      setClass('종이') 
+    }
     if (answer === '1') {
-      setClass('비닐') 
+      setClass('플라스틱')
     }
     if (answer === '2') {
-      setClass('플라스틱')
+      setClass('유리')
     }
     if (answer === '3') {
       setClass('캔')
     }
     if (answer === '4') {
-      setClass('유리')
+      setClass('스티로폼')
     }
     if (answer === '5') {
-      setClass('금속')
-    }
-    if (answer === '6') {
-      setClass('기타')
+      setClass('페트병')
     }
   }
 
@@ -60,7 +60,7 @@ function GhostLeg() {
 
     // 1번째일 때 사다리
 
-    if (resultValue === "1") {
+    if (resultValue === "0") {
       setTimeout(() => {
         setIsMl1(true);
       }, 1600);
@@ -81,7 +81,7 @@ function GhostLeg() {
 
   // 2번째일 때 사다리
 
-  if (resultValue === "2") {
+  if (resultValue === "1") {
 
     setTimeout(() => {
         setIsMl2(true);
@@ -105,7 +105,7 @@ function GhostLeg() {
 
   // 3번째일 때 사다리
 
-  if (resultValue === "3") {
+  if (resultValue === "2") {
 
     setTimeout(() => {
         setIsMl3(true);
@@ -129,7 +129,7 @@ function GhostLeg() {
 
   // 4번째일 때 사다리
 
-  if (resultValue === "4") {
+  if (resultValue === "3") {
 
     setTimeout(() => {
         setIsMr1(true);
@@ -153,7 +153,7 @@ function GhostLeg() {
 
   // 5번째일 때 사다리
 
-  if (resultValue === "5") {
+  if (resultValue === "4") {
 
     setTimeout(() => {
         setIsMr2(true);
@@ -177,7 +177,7 @@ function GhostLeg() {
 
   //     6번째일 때 사다리
 
-  if (resultValue === "6") {
+  if (resultValue === "5") {
 
       setTimeout(() => {
         setIsMr3(true);
@@ -230,7 +230,7 @@ function GhostLeg() {
       <div className={`separateTrash ${isModal ? 'modal' : ''}`}>
         <div className='trashName'>
           <img src='./images/separateTrash1.png' alt='trash1' className='separate1'/>
-          <h2>비닐</h2>
+          <h2>종이</h2>
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash2.png' alt='trash2' className='separate2'/>
@@ -238,19 +238,19 @@ function GhostLeg() {
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash3.png' alt='trash3' className='separate3'/>
-          <h2>캔</h2>
-        </div>
-        <div className='trashName'>
-          <img src='./images/separateTrash4.png' alt='trash4' className='separate4'/>
           <h2>유리</h2>
         </div>
         <div className='trashName'>
+          <img src='./images/separateTrash4.png' alt='trash4' className='separate4'/>
+          <h2>캔</h2>
+        </div>
+        <div className='trashName'>
           <img src='./images/separateTrash5.png' alt='trash5' className='separate5'/>
-          <h2>금속</h2>
+          <h2>스티로폼</h2>
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash6.png' alt='trash6' className='separate6'/>  
-          <h2>기타</h2>
+          <h2>페트병</h2>
         </div>    
       </div>   
       <div className='modalCover'>

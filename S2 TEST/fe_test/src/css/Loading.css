@@ -16,6 +16,12 @@
     align-items: center;
   }
 
+  .maintainance {
+    position: absolute;
+    bottom: 160px;
+    font-size: 24px;
+  }
+
   /* Wizard CSS & Animations */
   .wizard {
     position: relative;
