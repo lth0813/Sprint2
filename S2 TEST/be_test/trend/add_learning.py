@@ -23,24 +23,25 @@ def add_learning(request):
     connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
 
-    check_data_count_query = "SELECT COUNT(*) FROM result"
-    cursor = connection.cursor()
-    with connection.cursor() as cursor:
-            cursor.execute(check_data_count_query)
-            data_amount = cursor.fetchall()[0][0]
-    while data_amount > 0:
+    while True:
         # 재학습 진행 상황 확인
+        connection = mysql.connector.connect(**db_config)
         check_progress_query = "SELECT * FROM add_learning"
+        cursor = connection.cursor()
         with connection.cursor() as cursor:
                 cursor.execute(check_progress_query)
                 progress = cursor.fetchall()[0][0]
+        check_data_count_query = "SELECT COUNT(*) FROM result"
+        cursor = connection.cursor()
+        with connection.cursor() as cursor:
+                cursor.execute(check_data_count_query)
+                data_amount = cursor.fetchall()[0][0]
         
         # 재학습이 필요한 경우
-        if progress == 0: 
-            
+        if data_amount > 0 and progress == 0: 
+            cursor = connection.cursor()
             # 재학습 진행 상황을 진행중(1)로 바꾸기
             change_progress_query = "UPDATE add_learning SET progress = 1"
-            cursor = connection.cursor()
             cursor.execute(change_progress_query)
             connection.commit()
             
@@ -94,18 +95,16 @@ def add_learning(request):
                 file_path = f'./{name}'
                 os.remove(file_path)
             
-            file_del_query = "DELETE FROM result"
             cursor = connection.cursor()
+            file_del_query = "DELETE FROM result"
             cursor.execute(file_del_query)
             connection.commit()
             
             # 재학습 진행 상황을 완료(2)로 바꾸기
-            change_progress_query = "UPDATE add_learning SET progress = 2"
             cursor = connection.cursor()
+            change_progress_query = "UPDATE add_learning SET progress = 0"
             cursor.execute(change_progress_query)
             connection.commit()
-            
-            data_amount = 0
             
             print("재학습이 완료 되었습니다!!!!!!!!!!!!")
 
@@ -114,13 +113,7 @@ def add_learning(request):
         elif progress == 1:
             print("재학습이 진행 중입니다. 잠시만 기다려주세요")
             time.sleep(5)
+
         # 재학습이 완료된 경우
-        elif progress == 2:
-            print("테스트")
-            change_progress_query = "UPDATE add_learning SET progress = 0"
-            cursor = connection.cursor()
-            cursor.execute(change_progress_query)
-            connection.commit()
-            data_amount = 0
-            print(data_amount)
+        elif data_amount == 0 and progress == 0:
             return HttpResponse('0')

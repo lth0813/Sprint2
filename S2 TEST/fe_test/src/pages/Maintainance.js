@@ -4,21 +4,6 @@ import axios from 'axios';
 function Maintainance() {
 
     const [dots, setDots] = useState('');
-    const [complete, setComplete] = useState(false);
-
-    useEffect(() => {
-      axios.post('http://10.10.21.89:8000/addlearn/')
-      .then((res)=>{
-        console.log(res.data)
-          if (res.data === 0) {
-              console.log('점검 완료!!')             
-              setComplete(true)
-          }
-          if (complete) {
-            window.location.href = "/"
-          }
-      }) },[complete])
-
 
     useEffect(() => {
       const intervalId = setInterval(() => {
@@ -38,6 +23,16 @@ function Maintainance() {
 
       return () => clearInterval(intervalId);
     }, []);
+
+    useEffect(() => {
+      axios.post('http://10.10.21.89:8000/addlearn/')
+      .then((res)=>{
+        console.log(res.data)
+          if (res.data === 0) {
+              console.log('점검 완료!!')             
+              window.location.href = "/"
+          }
+      }) },[])
 
     return(
         <div className="loading">

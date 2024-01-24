@@ -32,7 +32,7 @@ function GhostLeg() {
       setClass('플라스틱')
     }
     if (answer === '2') {
-      setClass('유리병')
+      setClass('유리')
     }
     if (answer === '3') {
       setClass('캔')
@@ -238,7 +238,7 @@ function GhostLeg() {
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash3.png' alt='trash3' className='separate3'/>
-          <h2>유리병</h2>
+          <h2>유리</h2>
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash4.png' alt='trash4' className='separate4'/>

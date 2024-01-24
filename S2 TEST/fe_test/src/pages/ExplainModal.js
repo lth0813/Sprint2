@@ -53,19 +53,19 @@ function ExplainModal (props) {
                 <h2>그럼 어떤 분류인가요?</h2>
                 <div className="radioGrop">
                     <div className="radio1">
-                        <input className="input" type="radio" name="result" id="rb1" value={1}/>
+                        <input className="input" type="radio" name="result" id="rb1" value={0}/>
                         <label className="label two" htmlFor="rb1">종이</label>
-                        <input className="input" type="radio" name="result" id="rb2" value={2}/>
+                        <input className="input" type="radio" name="result" id="rb2" value={1}/>
                         <label className="label four" htmlFor="rb2">플라스틱</label>
-                        <input className="input" type="radio" name="result" id="rb3" value={3}/>
-                        <label className="label three" htmlFor="rb3">유리병</label>
+                        <input className="input" type="radio" name="result" id="rb3" value={2}/>
+                        <label className="label three" htmlFor="rb3">유리</label>
                     </div>
                     <div className="radio2">
-                        <input className="input" type="radio" name="result" id="rb4" value={4}/>
+                        <input className="input" type="radio" name="result" id="rb4" value={3}/>
                         <label className="label one" htmlFor="rb4">캔</label>
-                        <input className="input" type="radio" name="result" id="rb5" value={5}/>
+                        <input className="input" type="radio" name="result" id="rb5" value={4}/>
                         <label className="label four" htmlFor="rb5">스티로폼</label>
-                        <input className="input" type="radio" name="result" id="rb6" value={6}/>
+                        <input className="input" type="radio" name="result" id="rb6" value={5}/>
                         <label className="label three" htmlFor="rb6">페트병</label>
                     </div>
                 </div>

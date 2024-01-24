@@ -51,7 +51,7 @@ function PhotoUpload() {
     }
 
     const sendfile = () => {  
-        const server = 'http://10.10.21.89:8000'
+        const server = 'http://172.16.5.6:8000'
         const formData = new FormData();
         formData.append("files",file)
         axios.post(server+'/file/',formData,

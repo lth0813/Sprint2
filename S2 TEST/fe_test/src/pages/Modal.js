@@ -11,13 +11,8 @@ function Modal(props) {
         [3, 18, 14, 417, 0, 10],
         [7, 11, 0, 1, 482, 1],
         [6, 16, 31, 8, 1, 436]];
-      const labelsArray = ["Paper", "Plastic", "Glass", "Can", "Styrofoam", "Pl Bottle"];
+    const labelsArray = ["Paper", "Plastic", "Glass", "Can", "Styrofoam", "Pl Bottle"];
 
-      const customTheme = {
-        heatmap: {
-          colors: ['#000000', '#000000', '#000000'], // Customize colors for different values
-        },
-      };
       
 
     const ModalStyle = {
