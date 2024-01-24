@@ -9,7 +9,7 @@ function Loading() {
 
     useEffect(() => {
 
-    const server = 'http://localhost:8000';
+    const server = 'http://10.10.21.89:8000';
     const filename = sessionStorage.getItem('filename')
 
     axios.post(server+'/predict/',

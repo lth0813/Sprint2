@@ -32,7 +32,7 @@ function GhostLeg() {
       setClass('플라스틱')
     }
     if (answer === '2') {
-      setClass('유리')
+      setClass('유리병')
     }
     if (answer === '3') {
       setClass('캔')
@@ -201,13 +201,12 @@ function GhostLeg() {
 
   
   const sendResult = () => {
-    const server = 'http://localhost:8000'
+    const server = 'http://10.10.21.89:8000'
       axios.post(server+'/result/',{
         filename : window.sessionStorage.getItem('filename'),
         result : window.sessionStorage.getItem('result')
       },
       {headers:{'Content-Type': 'application/x-www-form-urlencoded'}})
-      .then(sessionStorage.clear())
       .then((response) => alert(response.data))
   }
 
@@ -239,7 +238,7 @@ function GhostLeg() {
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash3.png' alt='trash3' className='separate3'/>
-          <h2>유리</h2>
+          <h2>유리병</h2>
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash4.png' alt='trash4' className='separate4'/>
@@ -257,10 +256,12 @@ function GhostLeg() {
       <div className='modalCover'>
         <div className={`${isModal ? 'modal' : ''}`} id='modal'>
           <h1 className={`${isExplain ? 'explain' : ''}`} id='explain'>
-            {classification}입니다
+            {classification}<br/> 맞습니까?
           </h1>
-          <a href="/" onClick={()=>{sendResult()}} className={`${isExplain ? 'explain' : ''}`}>만족</a>
-          <a onClick={()=>{setExplainModal(true)}} className={`${isExplain ? 'explain' : ''}`}>불만족</a>
+          <div className='YesOrNo'>
+            <a href="/" onClick={()=>{sendResult()}} className={`${isExplain ? 'explain' : ''}`}>예</a>
+            <a onClick={()=>{setExplainModal(true)}} className={`${isExplain ? 'explain' : ''}`}>아니요</a>
+          </div>
         </div>
       </div>   
       <ExplainModal explainModal={explainModal} setExplainModal={setExplainModal}/>

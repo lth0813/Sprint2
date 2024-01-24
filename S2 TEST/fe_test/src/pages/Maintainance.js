@@ -7,12 +7,15 @@ function Maintainance() {
     const [complete, setComplete] = useState(false);
 
     useEffect(() => {
-      axios.post('http://localhost:8000/addlearn/')
+      axios.post('http://10.10.21.89:8000/addlearn/')
       .then((res)=>{
+        console.log(res.data)
           if (res.data === 0) {
-              console.log('점검 완료!!')
+              console.log('점검 완료!!')             
               setComplete(true)
-              window.location.href = "/"
+          }
+          if (complete) {
+            window.location.href = "/"
           }
       }) },[complete])
 

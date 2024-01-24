@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from "./Modal";
 
@@ -9,9 +10,10 @@ function PhotoUpload() {
     const [showButton, setShowButton] = useState(false);
     const [loading,setLoading] = useState(null);
     const [addlearn,setAL] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        axios.post('http://localhost:8000/check/')
+        axios.post('http://10.10.21.89:8000/check/')
         .then((res)=>{
             if (res.data === 0) {
                 console.log('재학습 없음')
@@ -37,6 +39,7 @@ function PhotoUpload() {
     }
 
     const uploadfile = (e) => {
+        if (e.target.files[0] != null) {
         const file_extension = e.target.files[0].name.slice(-4).toLowerCase()
         const file_allow = ['.jpg','.png','.svg','jpeg','webp']
         if(!file_allow.includes(file_extension)){
@@ -45,9 +48,10 @@ function PhotoUpload() {
             setFile(e.target.files[0])
         }
     }
+    }
 
     const sendfile = () => {  
-        const server = 'http://localhost:8000'
+        const server = 'http://10.10.21.89:8000'
         const formData = new FormData();
         formData.append("files",file)
         axios.post(server+'/file/',formData,
@@ -94,9 +98,15 @@ function PhotoUpload() {
                             <div className='upload'>
                                 <div className='uploadFile'>
                                     <label htmlFor="file">
-                                        <button>
-                                            사진 업로드
-                                        </button>
+                                    <div className="wrapper">
+                                        <div className="speechbubble">
+                                            <p>종이, 플라스틱, 유리, 캔,<br/> 스티로폼, 페트병만 넣어주세요</p>
+                                            <span className="username">어느 불쌍한 개발자가..</span>
+                                        </div>
+                                    </div>
+                                    <button className='photo'>
+                                        사진 업로드
+                                    </button>
                                     </label>
                                     <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept=".jpg, .jpeg, .png, .svg, .webp"/>
                                 </div>

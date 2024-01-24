@@ -4,6 +4,8 @@ import './css/PhotoUpload.css';
 import './css/Loading.css';
 import './css/GhostLeg.css';
 import './css/Result.css';
+import './css/Modal.css';
+import './css/SpeechBubble.css';
 import PhotoUpload from "./pages/PhotoUpload";
 import Loading from "./pages/Loading";
 import GhostLeg from "./pages/GhostLeg";

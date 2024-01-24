@@ -13,6 +13,7 @@ def condition_check(request):
     connection = mysql.connector.connect(**db_config)
 
     counts = []
+    num_of_data = 1
     for i in range(6):
         check_count_query = f"SELECT COUNT(classification) FROM result WHERE classification = {i}"
         with connection.cursor() as cursor:
@@ -20,7 +21,7 @@ def condition_check(request):
             cnt = cursor.fetchall()[0][0]
         counts.append(cnt)
     # 각 데이터 개수에 따라 재학습 여부 설정
-    all_cnt = all(cnt >= 2 for cnt in counts)
+    all_cnt = all(cnt >= num_of_data for cnt in counts)
     if all_cnt:
         return HttpResponse("1")
     else:
