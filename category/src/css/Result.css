@@ -1,7 +1,6 @@
 
   :root {
     --primary: #90d2a7;
-    /* --secondary: #673ab7; */
   }
 
   *::before,
@@ -9,7 +8,6 @@
     box-sizing: border-box;
   }
 
-  /* Hide inputs */
   .input {
     position: absolute;
     opacity: 0;
@@ -40,7 +38,6 @@
     width: 220px;
   }
 
-  /* Styles */
   .label {
     display: flex;
     align-items: center;
@@ -50,6 +47,7 @@
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.25, 0.25, 0.5, 1.9);
     margin: 10px 40px 10px 40px;
+    box-sizing: border-box;
   }
 
   .label::before {
@@ -70,7 +68,6 @@
     border-radius: 2rem;
   }
 
-  /* Checked */
   .input:checked + .label {
     color: white;
     font-weight: 600;
@@ -110,7 +107,8 @@
   margin-top: 10px;
   display: inline-block;
   text-decoration: none;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   border: none;
   cursor: pointer;
 }

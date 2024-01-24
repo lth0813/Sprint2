@@ -134,6 +134,7 @@
     overflow: hidden;
     z-index: 2;
     padding: 100px;
+    box-sizing: border-box;
   }
 
   #modal::before {
@@ -178,6 +179,7 @@
     font-weight: 700;
     width: 90px;
     text-align: center;
+    box-sizing: border-box;
   }
 
   .separateTrash.modal {

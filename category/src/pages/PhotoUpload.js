@@ -57,12 +57,18 @@ function PhotoUpload() {
                     <div className='recycling'>
                         <h2>recycling</h2>
                         <div className='secUpload'>
-                            <div className='upload'>
-                                <div className='uploadFile'>
-                                    <label htmlFor="file">
-                                        <button>
-                                            사진 업로드
-                                        </button>
+                            <div className='upload'>         
+                                <div className='uploadFile'>                      
+                                    <label htmlFor="file"> 
+                                    <div className="wrapper">
+                                        <div className="speechbubble">
+                                            <p>종이, 플라스틱, 유리, 캔,<br/> 스티로폼, 페트병만 넣어주세요</p>
+                                            <span className="username">어느 불쌍한 개발자가..</span>
+                                        </div>
+                                    </div>  
+                                    <button className='photo'>
+                                        사진 업로드
+                                    </button>                                                                             
                                     </label>
                                     <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept="image/gif, image/jpeg, image/png"/>
                                 </div>

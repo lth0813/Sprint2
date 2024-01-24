@@ -1,0 +1,48 @@
+    .MuiGrid-root .MuiGrid-container .css-2tza7a-MuiGrid-root .MuiGrid-root .MuiGrid-item .MuiGrid-grid-xs-12 .css-bj7xu4-MuiGrid-root  {
+       width: 100px;
+    }
+    
+    tr,td{
+        text-align: center;
+    }
+
+    tr .css-1jb5lza{
+        transform: none;
+        -webkit-transform: rotate(270deg);
+        border: 0;
+        padding: 0;
+        font-size: small;
+        justify-content: center;
+
+    }
+    tr .css-1yw8ytw{
+        border:0;
+        padding: 0;
+        font-size: small;
+    }
+
+    .css-bj7xu4-MuiGrid-root .css-3bhhyn{
+        height: 80%;
+    }
+    .MuiGrid-root .MuiGrid-item .css-1a19awz-MuiGrid-root{
+        height: 30%;
+    }
+
+    .css-3bhhyn {
+        margin-right: 10px;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .chart {
+        width: 500px;
+    }
+
+    .chartResult {
+        font-size: 14px;
+    }

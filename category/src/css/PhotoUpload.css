@@ -4,7 +4,6 @@
     * {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
 
@@ -80,6 +79,7 @@
         left: 0;
         opacity: 1;
         visibility: visible;
+        box-sizing: border-box;
     }
 
     .recycling {
@@ -104,6 +104,21 @@
         line-height: 1em;
         margin-bottom: 20px;
     }
+
+    .speechBubble {
+        background: black;
+        z-index: 1;
+        width: 100px;
+        height: 100px;
+        bottom: 100px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        position: absolute;
+      }
+      
+      label:hover .speechBubble {
+        opacity: 1;
+      }
 
     .card .content p {
         margin-top: 10px; 
