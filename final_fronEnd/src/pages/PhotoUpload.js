@@ -47,7 +47,7 @@ function PhotoUpload() {
         if (e.target.files[0] != null) {
 
             const file_extension = e.target.files[0].name.slice(-4).toLowerCase()
-            const file_allow = ['.jpg','.png','.svg','jpeg','webp']
+            const file_allow = ['.jpg','.png','jpeg','webp']
 
             if(!file_allow.includes(file_extension)){
                 alert("이미지 파일만 첨부해주세요.")
@@ -126,7 +126,7 @@ function PhotoUpload() {
                                         사진 업로드
                                     </button>
                                     </label>
-                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept=".jpg, .jpeg, .png, .svg, .webp"/>
+                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept=".jpg, .jpeg, .png, .webp"/>
                                 </div>
                                 <p>{truncateFileName(file.name || "", 16)}</p>
                             </div>
