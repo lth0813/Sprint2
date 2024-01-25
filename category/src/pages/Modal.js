@@ -11,7 +11,8 @@ function Modal(props) {
         [3, 18, 14, 417, 0, 10],
         [7, 11, 0, 1, 482, 1],
         [6, 16, 31, 8, 1, 436]];
-      const labelsArray = ["Paper", "Plastic", "Glass", "Can", "Styrofoam", "Pl Bottle"];
+    const labelsArray = ["Paper", "Plastic", "Glass", "Can", "Styrofoam", "Pl Bottle"];
+
       
 
     const ModalStyle = {
@@ -26,7 +27,7 @@ function Modal(props) {
         },
         content: {
             position: 'absolute',
-            width: '800px',
+            width: '660px',
             height: '700px',
             transform: 'translate(-50%, -50%)',
             top: '50%',
@@ -38,7 +39,10 @@ function Modal(props) {
             outline: 'none',
             padding: '0.5%',
             zIndex: '15',
-            borderRadius: '20px'
+            borderRadius: '20px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
         },
     };
     const paragraphStyle = {
@@ -51,21 +55,19 @@ function Modal(props) {
     return(
         <ReactModal style={ModalStyle} isOpen={props.modal} onRequestClose={() => props.setModal(false)}  ariaHideApp={false}>
             <div className="flex">
-                <div className="reuseComment">
-                    <h1>          
-                        약 90%의 정확도<br/>                      
-                    </h1>
-                </div>
                 <div className="chart">
                     <ConfusionMatrix
                         sideBar= {true}
                         labels= {labelsArray}
-                        data= {dataArray}>
+                        data= {dataArray}
+                        >
                     </ConfusionMatrix>
-                    <p className="chartResult">
-                        총 사용된 데이터: 18,000(훈련 데이터: 11,520, 검증 데이터: 2,880, 테스트 데이터: 3,600)<br/>
-                        훈련한 결과값의 평균: loss: 0.0085<br/> accuracy: 0.9974 <br/> val_loss: 0.5314 <br/>val_accuracy: 0.8980
-                    </p>
+                    <div className="data">
+                        <h1>18,000개의 데이터</h1>
+                        <p className="chartResult">
+                            정확도: 0.8980<br/> 손실: 0.5314
+                        </p>
+                    </div>
                 </div>
             </div>
         </ReactModal>

@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Maintainance() {
 
@@ -23,6 +23,16 @@ function Maintainance() {
 
       return () => clearInterval(intervalId);
     }, []);
+
+    useEffect(() => {
+      axios.post('http://10.10.21.89:8000/addlearn/')
+      .then((res)=>{
+        console.log(res.data)
+          if (res.data === 0) {
+              console.log('점검 완료!!')             
+              window.location.href = "/"
+          }
+      }) },[])
 
     return(
         <div className="loading">

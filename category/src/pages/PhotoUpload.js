@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from "./Modal";
 
@@ -7,22 +8,59 @@ function PhotoUpload() {
     const [modal,setModal] = useState(false);
     const [file,setFile] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const [loading,setLoading] = useState(null);
+    const [addlearn,setAL] = useState(false);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        axios.post('http://10.10.21.89:8000/check/')
+        .then((res)=>{
+            if (res.data === 0) {
+                console.log('재학습 없음')
+                setAL(false)
+            }
+            else if (res.data === 1) {
+                setAL(true)
+                if (addlearn){
+                    window.location.href = "/maintainance"
+                }
+            }
+        })
+    },[addlearn])
+
+    useEffect(()=>{
+        goloading();
+    },[loading])
+
+    const goloading = () => {
+        if(loading !== null){
+            window.location.href = "/loading"
+        }
+    }
 
     const uploadfile = (e) => {
-        console.log(e.target.files[0])
-        setFile(e.target.files[0])
+        if (e.target.files[0] != null) {
+        const file_extension = e.target.files[0].name.slice(-4).toLowerCase()
+        const file_allow = ['.jpg','.png','.svg','jpeg','webp']
+        if(!file_allow.includes(file_extension)){
+            alert("이미지 파일만 첨부해주세요.")
+        }else{
+            setFile(e.target.files[0])
+        }
+    }
     }
 
     const sendfile = () => {  
-        const server = 'http://localhost:8000'
+        const server = 'http://172.16.5.6:8000'
         const formData = new FormData();
         formData.append("files",file)
         axios.post(server+'/file/',formData,
         {headers:{'Content-Type': 'multipart/form-data'}})
-        .then(res=>{window.sessionStorage.setItem("filename",res.data.filename)})
-        .then(setTimeout(() => {window.location.href="/loading"},500))
-    }
+        .then((res)=>{
+            window.sessionStorage.setItem("filename",res.data.filename)
+            setLoading(res.data.filename)
+        })}
+
 
     const truncateFileName = (fileName, maxLength) => {
 
@@ -57,20 +95,20 @@ function PhotoUpload() {
                     <div className='recycling'>
                         <h2>recycling</h2>
                         <div className='secUpload'>
-                            <div className='upload'>         
-                                <div className='uploadFile'>                      
-                                    <label htmlFor="file"> 
+                            <div className='upload'>
+                                <div className='uploadFile'>
+                                    <label htmlFor="file">
                                     <div className="wrapper">
                                         <div className="speechbubble">
                                             <p>종이, 플라스틱, 유리, 캔,<br/> 스티로폼, 페트병만 넣어주세요</p>
                                             <span className="username">어느 불쌍한 개발자가..</span>
                                         </div>
-                                    </div>  
+                                    </div>
                                     <button className='photo'>
                                         사진 업로드
-                                    </button>                                                                             
+                                    </button>
                                     </label>
-                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept="image/gif, image/jpeg, image/png"/>
+                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept=".jpg, .jpeg, .png, .svg, .webp"/>
                                 </div>
                                 <p>{truncateFileName(file.name || "", 16)}</p>
                             </div>

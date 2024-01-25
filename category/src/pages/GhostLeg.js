@@ -1,8 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import ExplainModal from './ExplainModal';
+import { useNavigate } from 'react-router-dom';
+import CheckModal from './CheckModal';
 import axios from 'axios';
 
 function GhostLeg() {
+
+
+
+  // filename과 result가 없는데 접속 시
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+
+    const fileName = sessionStorage.getItem('filename');
+    const result = sessionStorage.getItem('result');
+
+    if (!fileName || !result) {   
+
+      
+      alert("사진을 업로드 해주세요");  
+      navigate('/');
+
+    }
+   
+  }, [navigate]);
+
+
 
   const [isModal, setIsModal] = useState(false);
   const [isExplain, setIsExplain] = useState(false);
@@ -25,22 +49,22 @@ function GhostLeg() {
 
   const findclass = () => {
     const answer = sessionStorage.getItem('result')
-    if (answer === '1') {
+    if (answer === '0') {
       setClass('종이') 
     }
-    if (answer === '2') {
+    if (answer === '1') {
       setClass('플라스틱')
     }
-    if (answer === '3') {
-      setClass('유리병')
+    if (answer === '2') {
+      setClass('유리')
     }
-    if (answer === '4') {
+    if (answer === '3') {
       setClass('캔')
     }
-    if (answer === '5') {
+    if (answer === '4') {
       setClass('스티로폼')
     }
-    if (answer === '6') {
+    if (answer === '5') {
       setClass('페트병')
     }
   }
@@ -60,7 +84,7 @@ function GhostLeg() {
 
     // 1번째일 때 사다리
 
-    if (resultValue === "1") {
+    if (resultValue === "0") {
       setTimeout(() => {
         setIsMl1(true);
       }, 1600);
@@ -81,7 +105,7 @@ function GhostLeg() {
 
   // 2번째일 때 사다리
 
-  if (resultValue === "2") {
+  if (resultValue === "1") {
 
     setTimeout(() => {
         setIsMl2(true);
@@ -105,7 +129,7 @@ function GhostLeg() {
 
   // 3번째일 때 사다리
 
-  if (resultValue === "3") {
+  if (resultValue === "2") {
 
     setTimeout(() => {
         setIsMl3(true);
@@ -129,7 +153,7 @@ function GhostLeg() {
 
   // 4번째일 때 사다리
 
-  if (resultValue === "4") {
+  if (resultValue === "3") {
 
     setTimeout(() => {
         setIsMr1(true);
@@ -153,7 +177,7 @@ function GhostLeg() {
 
   // 5번째일 때 사다리
 
-  if (resultValue === "5") {
+  if (resultValue === "4") {
 
     setTimeout(() => {
         setIsMr2(true);
@@ -177,7 +201,7 @@ function GhostLeg() {
 
   //     6번째일 때 사다리
 
-  if (resultValue === "6") {
+  if (resultValue === "5") {
 
       setTimeout(() => {
         setIsMr3(true);
@@ -201,7 +225,7 @@ function GhostLeg() {
 
   
   const sendResult = () => {
-    const server = 'http://localhost:8000'
+    const server = 'http://10.10.21.89:8000'
       axios.post(server+'/result/',{
         filename : window.sessionStorage.getItem('filename'),
         result : window.sessionStorage.getItem('result')
@@ -238,7 +262,7 @@ function GhostLeg() {
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash3.png' alt='trash3' className='separate3'/>
-          <h2>유리병</h2>
+          <h2>유리</h2>
         </div>
         <div className='trashName'>
           <img src='./images/separateTrash4.png' alt='trash4' className='separate4'/>
@@ -256,7 +280,7 @@ function GhostLeg() {
       <div className='modalCover'>
         <div className={`${isModal ? 'modal' : ''}`} id='modal'>
           <h1 className={`${isExplain ? 'explain' : ''}`} id='explain'>
-            {classification}가 맞습니까?
+            {classification}<br/> 맞습니까?
           </h1>
           <div className='YesOrNo'>
             <a href="/" onClick={()=>{sendResult()}} className={`${isExplain ? 'explain' : ''}`}>예</a>
@@ -264,7 +288,7 @@ function GhostLeg() {
           </div>
         </div>
       </div>   
-      <ExplainModal explainModal={explainModal} setExplainModal={setExplainModal}/>
+      <CheckModal explainModal={explainModal} setExplainModal={setExplainModal}/>
     </div>
   );
 
