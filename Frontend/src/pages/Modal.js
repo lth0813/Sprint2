@@ -12,7 +12,7 @@ function Modal(props) {
 
     useEffect(() => {
         console.log('Modal initializing..')
-        axios.post('http://172.16.5.64:8000/modelspec/')
+        axios.post('http://10.10.21.89:8000/modelspec/')
         .then((res)=>{
             setVl(res.data.vl)
             setVa(res.data.va)

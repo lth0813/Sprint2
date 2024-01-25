@@ -16,7 +16,7 @@ const reSendResult = () => {
     // 분류는 체크하고 제출을 클릭할 시
     // 서버에 정보를 전송 후 "/" 페이지로 이동하는 코드
 
-    const server = 'http://172.16.5.64:8000'
+    const server = 'http://10.10.21.89:8000'
 
     axios.post(server+'/result/',{
       filename : window.sessionStorage.getItem('filename'),
