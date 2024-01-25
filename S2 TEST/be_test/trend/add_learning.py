@@ -55,7 +55,7 @@ def add_learning(request):
             
             new_data_X = []
             new_data_y = []
-            num_of_data = 1
+            num_of_data = 100
             for i in range(6):
                 get_data_query = f"SELECT * FROM result WHERE classification = {i} LIMIT {num_of_data}"
                 with connection.cursor() as cursor:
@@ -63,6 +63,8 @@ def add_learning(request):
                     data = cursor.fetchall() 
                 for name, result in data:
                     x = plt.imread(f'./{name}')
+                    if len(x.shape) == 2:
+                        x = cv.cvtColor(x, cv.COLOR_GRAY2RGB)
                     x = cv.resize(x,(224,224))
                     x = x.reshape(1,224,224,-1)
                     x = x[:,:,:,:3]
@@ -81,11 +83,11 @@ def add_learning(request):
             X_train = vgg.predict(X_train)
             X_test = vgg.predict(X_test)
             
-            model.fit(X_train,y_train,epochs=3,validation_data=(X_test,y_test))
+            history = model.fit(X_train,y_train,epochs=20,validation_data=(X_test,y_test))
             
             np.save('X.npy',X)
             np.save('y.npy',y)
-            model.save('smart_bin2.h5')
+            model.save('smart_bin.h5')
             
             get_alldata_query = "SELECT * FROM result"
             with connection.cursor() as cursor:

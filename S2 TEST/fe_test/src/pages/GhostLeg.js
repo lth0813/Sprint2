@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import ExplainModal from './ExplainModal';
+import CheckModal from './CheckModal';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function GhostLeg() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fileName = sessionStorage.getItem('filename');
+    const result = sessionStorage.getItem('result');
+    if (!fileName || !result) {
+      setTimeout(() => {
+        alert("사진을 업로드 해주세요");
+        navigate('/');  
+    },0)
+    }
+  }, [navigate]);
+
 
   const [isModal, setIsModal] = useState(false);
   const [isExplain, setIsExplain] = useState(false);
@@ -207,6 +222,7 @@ function GhostLeg() {
         result : window.sessionStorage.getItem('result')
       },
       {headers:{'Content-Type': 'application/x-www-form-urlencoded'}})
+      .then(sessionStorage.clear())
       .then((response) => alert(response.data))
   }
 
@@ -264,7 +280,7 @@ function GhostLeg() {
           </div>
         </div>
       </div>   
-      <ExplainModal explainModal={explainModal} setExplainModal={setExplainModal}/>
+      <CheckModal explainModal={explainModal} setExplainModal={setExplainModal}/>
     </div>
   );
 

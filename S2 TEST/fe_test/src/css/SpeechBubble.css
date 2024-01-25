@@ -1,15 +1,10 @@
-/* Variables */
-:root {
+
+  :root {
     --color1: #161719;
     --color2: #26272b;
     --text: #9fa2a7;
-    --highlight1: #56b273;
-    --highlight2: #b388dd;
-    --highlight3: #ff8750;
-    --highlight4: #01AD9B;
   }
-  
-  /* Common Styles */
+
   .text-center {
     text-align: center;
   }
@@ -23,24 +18,14 @@
   .cf::after {
     clear: both;
   }
-  
-  /* Body Styles */
-  /* body {
-    background-color: var(--color1);
-    font-family: 'Roboto', sans-serif;
-    color: var(--text);
-  } */
-  
-  /* Wrapper Styles */
+
   .wrapper {
-    /* max-width: 450px; */
     margin: 0 auto;
     position: relative;
-    top: 55px;
-    left: 60px;
+    top: 56px;
+    left: 58px;
   }
   
-  /* Speech Bubble Styles */
   .speechbubble {
     position: absolute;
     background-color: var(--color2);
@@ -100,7 +85,7 @@
   }
   
   .speechbubble:nth-child(4n+1) {
-    border-color: var(--highlight1);
+    border-color: var(--color2);
   }
   
   .speechbubble p:before {

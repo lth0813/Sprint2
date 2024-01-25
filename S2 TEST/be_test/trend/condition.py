@@ -13,7 +13,7 @@ def condition_check(request):
     connection = mysql.connector.connect(**db_config)
 
     counts = []
-    num_of_data = 1
+    num_of_data = 100
     for i in range(6):
         check_count_query = f"SELECT COUNT(classification) FROM result WHERE classification = {i}"
         with connection.cursor() as cursor:

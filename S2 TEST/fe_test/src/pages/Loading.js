@@ -1,17 +1,34 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Loading() {
 
     const [fadeOut, setFadeOut] = useState(false);
     const [answer, setAnswer] = useState(false);
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        const fileName = sessionStorage.getItem('filename');
+        if (!fileName) {
+            setTimeout(() => {
+                alert("사진을 업로드 해주세요");
+                navigate('/');  
+            },0)
+        }
+        
+
+      }, [navigate]);
+
     useEffect(() => {
 
     const server = 'http://10.10.21.89:8000';
     const filename = sessionStorage.getItem('filename')
 
+    if (filename) {
     axios.post(server+'/predict/',
     {filename :filename},{headers:{'Content-Type': 'application/x-www-form-urlencoded'}}
     ).then(res => {
@@ -22,7 +39,7 @@ function Loading() {
         })
         .catch(error => {
         console.error('failed_to_get_result', error);
-        });
+        });}
         }, []);
     
     if (answer) {
