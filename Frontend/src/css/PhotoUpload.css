@@ -1,0 +1,248 @@
+    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .card {
+        position: relative;
+        width: 600px;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        transition: 0.4s;
+    }
+
+    .card .hidden {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .card .hidden::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f5f8f6;
+        clip-path: circle(120px at center);
+        transition: 0.4s;
+    }
+
+    .card:hover .hidden:before, .card .hidden.hovered::before {
+        background: #00C86E;
+        clip-path: circle(400px at center);
+    }
+
+    .card img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 320px;
+        pointer-events: none;
+        transition: 0.4s;
+    }
+
+    .card:hover img, .card img.hovered {
+        left: 72%;
+        height: 520px;
+    }
+
+    .card .content {
+        position: relative;
+        width: 50%;
+        left: 20%;
+        padding: 20px 20px 20px 40px;
+        transition: 0.4s;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .card:hover .content, .card .content.hovered {
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        box-sizing: border-box;
+    }
+
+    .recycling {
+        margin-right: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .card .content .secUpload {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .card .content h2 {
+        color: white;
+        text-transform: uppercase;
+        font-size: 2em;
+        line-height: 1em;
+        margin-bottom: 20px;
+    }
+
+    .speechBubble {
+        background: black;
+        z-index: 1;
+        width: 100px;
+        height: 100px;
+        bottom: 100px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        position: absolute;
+      }
+      
+      label:hover .speechBubble {
+        opacity: 1;
+      }
+
+    .card .content p {
+        margin-top: 10px; 
+        color: white;
+    }
+
+    .card .content .upload {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .card .content button, a {
+        position: relative;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background: white;
+        color: black;
+        margin-top: 10px;
+        display: inline-block;
+        text-decoration: none;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+
+    .card .content .result {
+        display: none;
+    }
+
+    .card .content .result.show {
+        display: block;
+    }
+
+    .bi-question-circle {
+        position: absolute;
+        bottom: 660px;
+        right: 60px;
+        opacity: 0.4;
+        cursor: pointer;
+        transition: all 0.4s;
+    }
+
+    .bi-question-circle:hover {
+        opacity: 1;
+    }
+
+    .bi-arrow-left-circle {
+        position: absolute;
+        right: 514px;
+        opacity: 0.6;
+        animation: moveLeftAndBack 1s infinite;
+    }
+
+    .bi-arrow-right-circle {
+        position: absolute;
+        left: 500px; 
+        opacity: 0.6;
+        animation: moveLightAndBack 1s infinite;
+    }
+
+    .uploadFile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .upload .uploadFile input[type="file"] {
+        position: absolute;
+        z-index: 1;
+        width: 114px;
+        height: 52px;
+        overflow: hidden;
+        border: 0;
+        opacity: 0;
+        margin-top: 10px;
+        font-size: 0;
+        cursor: pointer;
+    }
+
+    .container {
+        opacity: 0;
+        animation: fadeIn 0.8s ease-in-out 0.2s forwards;
+    }
+    
+    @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    }
+
+    @keyframes moveLeftAndBack {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        
+        50% {
+          transform: translateX(-10px);
+        }
+    }
+
+    @keyframes moveLightAndBack {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        
+        50% {
+          transform: translateX(10px);
+        }
+    }
+      
+
+    @media(max-width: 990px) {
+
+        .container .bi-arrow-left-circle {
+            opacity: 0;
+        }
+    
+        .container .bi-arrow-right-circle {
+            opacity: 0;
+        }
+
+    }
