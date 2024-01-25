@@ -1,39 +1,71 @@
 
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Loading() {
 
     const [fadeOut, setFadeOut] = useState(false);
+    const [answer, setAnswer] = useState(false);
+
+
+    // 세션에 filename이 없을 경우 alert을 띄우고
+    // "/"로 돌아가게 만드는 코드
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
-    //    const server = 'http://192.168.0.53:8000';
+        const fileName = sessionStorage.getItem('filename');
+        if (!fileName) {
+            setTimeout(() => {
+                alert("사진을 업로드 해주세요");
+                navigate('/');  
+            },0)
+        }   
 
-    //     axios.post(server + '/file/', {
-    //       headers: {
-    //         'Content-Type': 'multipart/form-data'
-    //       }
-    //     })
-    //       .then(response => {
-    //         const result = response.data.result;
-    //         sessionStorage.setItem('result', result); 
-    //         console.log('File uploaded successfully!');
-    //       })
-    //       .catch(error => {
-    //         console.error('File upload failed:', error);
-    //       });
+    }, [navigate]);
 
 
-      const timer = setTimeout(() => {
-        setFadeOut(true);
-      }, 5000);
-  
-      return () => clearTimeout(timer);
+
+    useEffect(() => {
+
+
+        // filename을 확인 후 서버에서 result를 받고
+        // 그 깂을 세션에 저장
+
+        const server = 'http://172.16.5.64:8000';
+        const filename = sessionStorage.getItem('filename')
+
+        if (filename) {
+        axios.post(server+'/predict/',
+        {filename :filename},{headers:{'Content-Type': 'application/x-www-form-urlencoded'}}
+        ).then(res => {
+            const result = res.data.result;
+            sessionStorage.setItem('result', result); 
+            setAnswer(true);
+            console.log(res);
+            })
+            .catch(error => {
+            console.error('failed_to_get_result', error);
+            });}
     }, []);
-  
+
+
+    // 바로 위 코드에서 result 값을 세션으로 받아야
+    // setAnswer가 true가 되기 때문에
+    // true가 된 후 fadeOut이 실행되고 그것이 끝나면
+    // navigateToGhostleg을 실행하는 코드
+        
+    if (answer) {
+        setAnswer(false);
+        setFadeOut(true);
+    }
+
+    // onAnimationEnd가 되면 "/ghostleg"로 이동하는 코드
+    
     const navigateToGhostleg = () => {
-      window.location.href = "/ghostleg";
+        window.location.href = "/ghostleg";
     }
 
     return(

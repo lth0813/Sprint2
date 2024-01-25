@@ -40,25 +40,8 @@
     margin-bottom: 20px;
   }
 
-  #modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
   a {
     display: none;
-  }
-
-  .modalCover a.explain {
-    padding: 10px 20px;
-    border-radius: 10px;
-    background: white;
-    color: black;
-    margin-top: 60px;
-    display: block;
-    font-weight: 700;
   }
 
   /* 아래부터 사다리 타는 애니매이션 */
@@ -128,7 +111,7 @@
   /* 사다리 타는 애니매이션은 여기까지 */
   
 
-  /* 모달 CSS */
+  /* 모달 관련 CSS */
 
   .modalCover {
     position: absolute;
@@ -139,18 +122,19 @@
     height: 100%;
   }
 
-
   #modal {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 600px;
     height: 60vh;
     border-radius: 20px;
     overflow: hidden;
     z-index: 2;
     padding: 100px;
+    box-sizing: border-box;
   }
 
   #modal::before {
@@ -176,6 +160,27 @@
     font-size: 50px;
     opacity: 1;
     z-index: 2;
+    text-align: center;
+  }
+
+  .YesOrNo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+  }
+
+  .modalCover a.explain {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    margin-top: 60px;
+    display: block;
+    font-weight: 700;
+    width: 90px;
+    text-align: center;
+    box-sizing: border-box;
   }
 
   .separateTrash.modal {

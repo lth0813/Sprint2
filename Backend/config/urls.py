@@ -16,10 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from trend.predict import FileUploader
+from trend.filesave import FileUploader
 from trend.savedb import SaveDb
+
+# from trend.predict import predict
+# from trend.condition import condition_check
+# from trend.add_learning import add_learning
+# from trend.modelspec import modelspec
+
+from trend.predictP import predict
+from trend.conditionP import condition_check
+from trend.add_learningP import add_learning
+from trend.modelspecP import modelspec
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('file/',FileUploader),
-    path('result/',SaveDb)
+    path('result/',SaveDb),
+    path('predict/',predict),
+    path('check/',condition_check),
+    path('addlearn/',add_learning),
+    path('modelspec/',modelspec)
 ]

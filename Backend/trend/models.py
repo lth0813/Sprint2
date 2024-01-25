@@ -3,7 +3,8 @@ import uuid
 from django.db import models
 
 def generate_unique_filename(instance, filename):
-    ext = filename.split('.')[-1]
+    # ext = filename.split('.')[-1]
+    ext = "jpg"
     filename = f"{uuid.uuid4().hex}.{ext}"
     return os.path.join('upload/', filename)
 

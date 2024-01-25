@@ -7,22 +7,73 @@ function PhotoUpload() {
     const [modal,setModal] = useState(false);
     const [file,setFile] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const [loading,setLoading] = useState(null);
+    const [addlearn,setAL] = useState(false);
 
 
-    const uploadfile = (e) => {
-        console.log(e.target.files[0])
-        setFile(e.target.files[0])
+    // DB에 특정 개수가 쌓일 시 /maintainance로 이동 후
+    // 모델이 학습하고 다 된다면 원래 페이지로 돌아온다는 코드
+
+    useEffect(() => {
+        axios.post('http://172.16.5.64:8000/check/')
+        .then((res)=>{
+            if (res.data === 0) {
+                console.log('재학습 없음')
+                setAL(false)
+            }
+            else if (res.data === 1) {
+                setAL(true)
+                if (addlearn){
+                    window.location.href = "/maintainance"
+                }
+            }
+        })
+    },[addlearn])
+
+    useEffect(()=>{
+        goloading();
+    },[loading])
+
+    const goloading = () => {
+        if(loading !== null){
+            window.location.href = "/loading"
+        }
     }
 
+
+    // 이미지 파일이 아닌 것을 첨부할 시 실행되는 코드
+
+    const uploadfile = (e) => {
+        if (e.target.files[0] != null) {
+
+            const file_extension = e.target.files[0].name.slice(-4).toLowerCase()
+            const file_allow = ['.jpg','.png','jpeg','webp']
+
+            if(!file_allow.includes(file_extension)){
+                alert("이미지 파일만 첨부해주세요.")
+            }   else{
+                setFile(e.target.files[0])
+            }
+        }
+    }
+
+
+    // 이미지 파일을 첨부해 서버에 전송하는 코드
+
     const sendfile = () => {  
-        const server = 'http://localhost:8000'
+        const server = 'http://172.16.5.64:8000'
         const formData = new FormData();
         formData.append("files",file)
         axios.post(server+'/file/',formData,
         {headers:{'Content-Type': 'multipart/form-data'}})
-        .then(res=>{window.sessionStorage.setItem("filename",res.data.filename); window.sessionStorage.setItem("result",res.data.result)})
-        .then(setTimeout(() => {window.location.href="/loading"},1500))
-    }
+        .then((res)=>{
+            window.sessionStorage.setItem("filename",res.data.filename)
+            setLoading(res.data.filename)
+        })}
+
+
+    // 이미지 이름이 너무 길다면 maxLength에서 자르고
+    // 이후는 ...으로 나타내는 코드
 
     const truncateFileName = (fileName, maxLength) => {
 
@@ -33,6 +84,11 @@ function PhotoUpload() {
         }
         
     };
+
+
+    // 변수 file이 변경되면 setShowButton을 false로 반환 후 변경
+    // 결과적으로 ${file.name ? 'hovered' : ''}`}과 같이
+    // 클래스 이름을 붙였다 없애는 역할을 하는 코드
 
     useEffect(() => {
         setShowButton(!!file);
@@ -60,11 +116,17 @@ function PhotoUpload() {
                             <div className='upload'>
                                 <div className='uploadFile'>
                                     <label htmlFor="file">
-                                        <button>
-                                            사진 업로드
-                                        </button>
+                                    <div className="wrapper">
+                                        <div className="speechbubble">
+                                            <p>종이, 플라스틱, 유리, 캔,<br/> 스티로폼, 페트병만 넣어주세요</p>
+                                            <span className="username">어느 불쌍한 개발자가..</span>
+                                        </div>
+                                    </div>
+                                    <button className='photo'>
+                                        사진 업로드
+                                    </button>
                                     </label>
-                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept="image/gif, image/jpeg, image/png"/>
+                                    <input className='file' type='file' onChange={(e)=>{uploadfile(e)}} accept=".jpg, .jpeg, .png, .webp"/>
                                 </div>
                                 <p>{truncateFileName(file.name || "", 16)}</p>
                             </div>
