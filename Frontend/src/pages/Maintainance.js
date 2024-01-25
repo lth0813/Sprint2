@@ -32,7 +32,7 @@ function Maintainance() {
   // 서버에서 0을 받으면 "/"로 이동하는 코드
 
   useEffect(() => {
-    axios.post('http://172.16.5.64:8000/addlearn/')
+    axios.post('http://10.10.21.89:8000/addlearn/')
     .then((res)=>{
       console.log(res.data)
         if (res.data === 0) {

@@ -34,7 +34,7 @@ function Loading() {
         // filename을 확인 후 서버에서 result를 받고
         // 그 깂을 세션에 저장
 
-        const server = 'http://172.16.5.64:8000';
+        const server = 'http://10.10.21.89:8000';
         const filename = sessionStorage.getItem('filename')
 
         if (filename) {

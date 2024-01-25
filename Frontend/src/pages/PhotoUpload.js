@@ -15,7 +15,7 @@ function PhotoUpload() {
     // 모델이 학습하고 다 된다면 원래 페이지로 돌아온다는 코드
 
     useEffect(() => {
-        axios.post('http://172.16.5.64:8000/check/')
+        axios.post('http://10.10.21.89:8000/check/')
         .then((res)=>{
             if (res.data === 0) {
                 console.log('재학습 없음')
@@ -61,7 +61,7 @@ function PhotoUpload() {
     // 이미지 파일을 첨부해 서버에 전송하는 코드
 
     const sendfile = () => {  
-        const server = 'http://172.16.5.64:8000'
+        const server = 'http://10.10.21.89:8000'
         const formData = new FormData();
         formData.append("files",file)
         axios.post(server+'/file/',formData,

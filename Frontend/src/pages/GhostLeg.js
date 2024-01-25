@@ -238,7 +238,7 @@ function GhostLeg() {
   // 해당 정보를 서버에 전송하는 코드
   
   const sendResult = () => {
-    const server = 'http://172.16.5.64:8000'
+    const server = 'http://10.10.21.89:8000'
       axios.post(server+'/result/',{
         filename : window.sessionStorage.getItem('filename'),
         result : window.sessionStorage.getItem('result')
